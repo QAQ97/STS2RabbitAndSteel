@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "PowerInspect/1.0.0": {
+        "dependencies": {
+          "System.Reflection.MetadataLoadContext": "10.0.8"
+        },
+        "runtime": {
+          "PowerInspect.dll": {}
+        }
+      },
+      "System.Reflection.MetadataLoadContext/10.0.8": {
+        "runtime": {
+          "lib/net10.0/System.Reflection.MetadataLoadContext.dll": {
+            "assemblyVersion": "10.0.0.8",
+            "fileVersion": "10.0.826.23019"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PowerInspect/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Reflection.MetadataLoadContext/10.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w9sjhVDe4AKkyswUctVK3oCmZHaA7g+ZUG/xDmzgbsOGxmeRQA6lCQeAh6r75K0lcsLlfBzZXmsNblndyNJhxw==",
+      "path": "system.reflection.metadataloadcontext/10.0.8",
+      "hashPath": "system.reflection.metadataloadcontext.10.0.8.nupkg.sha512"
+    }
+  }
+}

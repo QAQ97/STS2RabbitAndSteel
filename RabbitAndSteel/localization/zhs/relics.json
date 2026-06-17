@@ -1,0 +1,23 @@
+{
+    "RABBIT_AND_STEEL_RELIC_ETERNAL_PARTNER.title": "永恒伙伴",
+    "RABBIT_AND_STEEL_RELIC_ETERNAL_PARTNER.description": "根据[gold]召唤物[/gold]在战斗中造成的伤害增加经验值\n",
+    "RABBIT_AND_STEEL_RELIC_ETERNAL_PARTNER.flavor": "觉得很眼熟？",
+    "RABBIT_AND_STEEL_RELIC_SAPPHIRE_VIOLIN.title": "蓝宝石小提琴",
+    "RABBIT_AND_STEEL_RELIC_SAPPHIRE_VIOLIN.description": "攻击牌造成的伤害值增加[blue]30%[/blue]\n一场战斗中受到过总计[blue]2[/blue]次伤害，则[red]损坏[/red]。",
+    "RABBIT_AND_STEEL_RELIC_SAPPHIRE_VIOLIN.flavor": "觉得很眼熟？",
+    "RABBIT_AND_STEEL_RELIC_TOPAZ_CHARM.title": "黄玉护符",
+    "RABBIT_AND_STEEL_RELIC_TOPAZ_CHARM.description": "敌人额外掉落[blue]{Gold}[/blue][gold]金币[/gold]\n一场战斗中受到过总计[blue]3[/blue]次伤害，则[red]损坏[/red]。",
+    "RABBIT_AND_STEEL_RELIC_TOPAZ_CHARM.flavor": "觉得很眼熟？",
+    "RABBIT_AND_STEEL_RELIC_GRASSWOVEN_BRACELET.title": "草编手环",
+    "RABBIT_AND_STEEL_RELIC_GRASSWOVEN_BRACELET.description": "拾起时，将你的最大生命值提升[blue]{MaxHp}[/blue]\n你施加的Buff层数增强[blue]30%[/blue]。",
+    "RABBIT_AND_STEEL_RELIC_GRASSWOVEN_BRACELET.flavor": "觉得很眼熟？",
+    "RABBIT_AND_STEEL_RELIC_NIGHTSTAR_GRIMOIRE.title": "夜之星魔法书",
+    "RABBIT_AND_STEEL_RELIC_NIGHTSTAR_GRIMOIRE.description":"每[blue]{Turns}[/blue]回合\n造成[blue]{Damage}[/blue]点伤害。",
+    "RABBIT_AND_STEEL_RELIC_NIGHTSTAR_GRIMOIRE.flavor": "觉得很眼熟？",
+    "RABBIT_AND_STEEL_RELIC_SLEEPING_GREATBOW.title": "沉眠长弓",
+    "RABBIT_AND_STEEL_RELIC_SLEEPING_GREATBOW.description": "回合开始时对意图对攻击的敌人\n造成[blue]{Damage}[/blue]点伤害。",
+    "RABBIT_AND_STEEL_RELIC_SLEEPING_GREATBOW.flavor": "觉得很眼熟？",
+    "RABBIT_AND_STEEL_RELIC_PIDGEON_BOW.title": "鸽弓",
+    "RABBIT_AND_STEEL_RELIC_PIDGEON_BOW.description": "回合开始时对随机敌人造成[blue]{Damage}[/blue]点伤害。",
+    "RABBIT_AND_STEEL_RELIC_PIDGEON_BOW.flavor": "觉得很眼熟？"
+}

@@ -1,0 +1,136 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3hv3tpx3rsfw"]
+
+[ext_resource type="Texture2D" uid="uid://bha2wbgy6ygbe" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/attack1.png" id="1_n3pio"]
+[ext_resource type="Texture2D" uid="uid://dufxtbnnx8jgo" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/attack2.png" id="2_s21m2"]
+[ext_resource type="Texture2D" uid="uid://cin0jgylkutmn" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/attack3.png" id="3_v76y4"]
+[ext_resource type="Texture2D" uid="uid://bavblkdr0sw6p" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/attack4.png" id="4_i0vn6"]
+[ext_resource type="Texture2D" uid="uid://dpl2qk4tpms3r" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/cast1.png" id="5_prixt"]
+[ext_resource type="Texture2D" uid="uid://dn6hjb3dir8dq" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/cast2.png" id="6_l5rhm"]
+[ext_resource type="Texture2D" uid="uid://dq8u886ithgj1" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/cast3.png" id="7_4wiyn"]
+[ext_resource type="Texture2D" uid="uid://b0vori7ao8y16" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/cast4.png" id="8_r1w57"]
+[ext_resource type="Texture2D" uid="uid://dx3xuhm5nb3wn" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/die.png" id="9_gbghh"]
+[ext_resource type="Texture2D" uid="uid://u1fl84sgy1qd" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/hurt1.png" id="10_ht2ni"]
+[ext_resource type="Texture2D" uid="uid://dabb6xo5tbdhd" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/idle_loop1.png" id="11_6ryvx"]
+[ext_resource type="Texture2D" uid="uid://bb6cf25n52s45" path="res://RabbitAndSteel/images/ancient/Pets/SunPriestess/idle_loop2.png" id="12_n55b3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_23h42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n3pio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s21m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v76y4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i0vn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v76y4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i0vn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v76y4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i0vn6")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_prixt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l5rhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4wiyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r1w57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4wiyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r1w57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4wiyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r1w57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l5rhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_prixt")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gbghh")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.8
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ht2ni")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_6ryvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_n55b3")
+}],
+"loop": true,
+"name": &"idle_loop",
+"speed": 3.0
+}]
+
+[node name="SunPriestess" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0.50000703, -181.50005)
+scale = Vector2(0.862, 0.862)
+sprite_frames = SubResource("SpriteFrames_23h42")
+animation = &"idle_loop"
+autoplay = "idle_loop"
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -278.0
+offset_right = 121.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, -168)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, -310)

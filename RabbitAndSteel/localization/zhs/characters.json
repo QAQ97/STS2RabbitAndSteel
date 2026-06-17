@@ -1,0 +1,17 @@
+{
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.aromaPrinciple": "[sine][blue]……等待……[/blue][/sine]",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.banter.alive.endTurnPing": "……",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.banter.dead.endTurnPing": "……",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.cardsModifierDescription": "古代兔子的卡牌现在会出现在奖励和商店中。",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.cardsModifierTitle": "古代兔子卡牌",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.description": "......",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.eventDeathPrevention": "......",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.goldMonologue": ".....",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.possessiveAdjective": "她的",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.pronounObject": "她",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.pronounPossessive": "她的",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.pronounSubject": "她",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.title": "古代兔子",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.titleObject": "古代兔子",
+  "RABBIT_AND_STEEL_CHARACTER_ANCIENT_CHARACTER.unlockText": "用[pink]{Prerequisite}[/pink]进行一局游戏来解锁这个角色。"
+}

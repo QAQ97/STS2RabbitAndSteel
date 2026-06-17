@@ -1,0 +1,136 @@
+[gd_scene load_steps=14 format=3 uid="uid://25t8k3d01chd"]
+
+[ext_resource type="Texture2D" uid="uid://b7s8o2kp6it8i" path="res://RabbitAndSteel/images/ancient/Pets/Hero/attack1.png" id="1_vg4x8"]
+[ext_resource type="Texture2D" uid="uid://bjdr17k63yofl" path="res://RabbitAndSteel/images/ancient/Pets/Hero/attack2.png" id="2_mh2qq"]
+[ext_resource type="Texture2D" uid="uid://db5auuya1braa" path="res://RabbitAndSteel/images/ancient/Pets/Hero/attack3.png" id="3_yoi07"]
+[ext_resource type="Texture2D" uid="uid://drhhy37c5mkl3" path="res://RabbitAndSteel/images/ancient/Pets/Hero/attack4.png" id="4_qm8ll"]
+[ext_resource type="Texture2D" uid="uid://dwp5ekogo75qh" path="res://RabbitAndSteel/images/ancient/Pets/Hero/cast1.png" id="5_dls1m"]
+[ext_resource type="Texture2D" uid="uid://x1a5hqmpv4c" path="res://RabbitAndSteel/images/ancient/Pets/Hero/cast2.png" id="6_esx74"]
+[ext_resource type="Texture2D" uid="uid://bf1l3l8trviom" path="res://RabbitAndSteel/images/ancient/Pets/Hero/cast3.png" id="7_px7qm"]
+[ext_resource type="Texture2D" uid="uid://ddt5hotvx5syy" path="res://RabbitAndSteel/images/ancient/Pets/Hero/cast4.png" id="8_ihtrs"]
+[ext_resource type="Texture2D" uid="uid://016fx3kxvfc8" path="res://RabbitAndSteel/images/ancient/Pets/Hero/die.png" id="9_x7r88"]
+[ext_resource type="Texture2D" uid="uid://d4lnp3t5kxne" path="res://RabbitAndSteel/images/ancient/Pets/Hero/hurt1.png" id="10_hql3n"]
+[ext_resource type="Texture2D" uid="uid://dje1nqreoly1f" path="res://RabbitAndSteel/images/ancient/Pets/Hero/idle_loop1.png" id="11_03m42"]
+[ext_resource type="Texture2D" uid="uid://dslx8jf22vcof" path="res://RabbitAndSteel/images/ancient/Pets/Hero/idle_loop2.png" id="12_umf6c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_23h42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vg4x8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mh2qq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yoi07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qm8ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yoi07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qm8ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yoi07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qm8ll")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dls1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_esx74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_px7qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ihtrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_px7qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ihtrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_px7qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ihtrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_esx74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dls1m")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_x7r88")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.8
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_hql3n")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_03m42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_umf6c")
+}],
+"loop": true,
+"name": &"idle_loop",
+"speed": 3.0
+}]
+
+[node name="Hero" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0.50000703, -181.50005)
+scale = Vector2(0.862, 0.862)
+sprite_frames = SubResource("SpriteFrames_23h42")
+animation = &"idle_loop"
+autoplay = "idle_loop"
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -278.0
+offset_right = 121.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, -168)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, -310)

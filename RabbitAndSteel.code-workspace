@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "H:/STS-HIRO-MOD-main"
+		}
+	],
+	"settings": {
+		"godotTools.editorPath.godot4": "h:\\Godot_v4.5.1-stable_mono_win64\\Godot_v4.5.1-stable_mono_win64\\Godot_v4.5.1-stable_mono_win64.exe"
+	}
+}

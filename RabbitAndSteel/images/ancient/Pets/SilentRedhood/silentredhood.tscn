@@ -1,0 +1,137 @@
+[gd_scene load_steps=14 format=3 uid="uid://dp77iryw3rwmb"]
+
+[ext_resource type="Texture2D" uid="uid://bwnv850jckvgj" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/attack1.png" id="1_g721c"]
+[ext_resource type="Texture2D" uid="uid://d0yowmc6x3pam" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/attack2.png" id="2_fvliw"]
+[ext_resource type="Texture2D" uid="uid://b2471dc0hy4ty" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/attack3.png" id="3_niqcm"]
+[ext_resource type="Texture2D" uid="uid://dcio8kiuu5fsk" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/attack4.png" id="4_obrxk"]
+[ext_resource type="Texture2D" uid="uid://dgxc40ihivr0k" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/cast1.png" id="5_f6lj7"]
+[ext_resource type="Texture2D" uid="uid://cn6slgjpv7djq" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/cast2.png" id="6_a5hm1"]
+[ext_resource type="Texture2D" uid="uid://cq5hn4p3wytx5" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/cast3.png" id="7_5efxx"]
+[ext_resource type="Texture2D" uid="uid://cgkc0ibylwut7" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/cast4.png" id="8_23y8r"]
+[ext_resource type="Texture2D" uid="uid://b8kh0wobuxuvg" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/die.png" id="9_8qaov"]
+[ext_resource type="Texture2D" uid="uid://dylwnk0q0cc3g" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/hurt1.png" id="10_mtvrh"]
+[ext_resource type="Texture2D" uid="uid://k26p1qbyj335" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/idle_loop1.png" id="11_jrf4y"]
+[ext_resource type="Texture2D" uid="uid://dskkf7xl6sihg" path="res://RabbitAndSteel/images/ancient/Pets/SilentRedhood/idle_loop2.png" id="12_k6i5n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_23h42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g721c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fvliw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_niqcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_obrxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_niqcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_obrxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_niqcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_obrxk")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_f6lj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a5hm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5efxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_23y8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5efxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_23y8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5efxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_23y8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a5hm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f6lj7")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_8qaov")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.8
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_mtvrh")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_jrf4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_k6i5n")
+}],
+"loop": true,
+"name": &"idle_loop",
+"speed": 3.0
+}]
+
+[node name="SilentRedhood" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0.50000703, -181.50005)
+scale = Vector2(0.862, 0.862)
+sprite_frames = SubResource("SpriteFrames_23h42")
+animation = &"idle_loop"
+autoplay = "idle_loop"
+frame_progress = 0.29852712
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -278.0
+offset_right = 121.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, -168)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, -310)

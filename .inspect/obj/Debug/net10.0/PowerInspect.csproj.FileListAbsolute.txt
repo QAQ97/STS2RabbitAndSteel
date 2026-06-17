@@ -1,0 +1,17 @@
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.AssemblyInfoInputs.cache
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.AssemblyInfo.cs
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.csproj.CoreCompileInputs.cache
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.csproj.AssemblyReference.cache
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\bin\Debug\net10.0\PowerInspect.exe
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\bin\Debug\net10.0\PowerInspect.deps.json
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\bin\Debug\net10.0\PowerInspect.runtimeconfig.json
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\bin\Debug\net10.0\PowerInspect.dll
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\bin\Debug\net10.0\PowerInspect.pdb
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\bin\Debug\net10.0\System.Reflection.MetadataLoadContext.dll
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerIns.E343AE2A.Up2Date
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.dll
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\refint\PowerInspect.dll
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.pdb
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\PowerInspect.genruntimeconfig.cache
+C:\Users\86159\Documents\RabbitAndSteel\.inspect\obj\Debug\net10.0\ref\PowerInspect.dll

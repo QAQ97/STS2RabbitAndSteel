@@ -1,0 +1,11 @@
+{
+  "id": "RabbitAndSteel",
+  "name": "兔子与钢铁",
+  "author": "葬花九曲",
+  "description": "古代兔子",
+  "version": "1.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies":  [{ "id": "STS2-RitsuLib", "min_version": "0.4.23" }],
+  "affects_gameplay": true 
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xM3PnB5LQVA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\86159\\Documents\\RabbitAndSteel\\.inspect\\PowerInspect.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\86159\\.nuget\\packages\\system.reflection.metadataloadcontext\\10.0.8\\system.reflection.metadataloadcontext.10.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

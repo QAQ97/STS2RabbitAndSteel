@@ -1,0 +1,47 @@
+{
+    "RABBIT_AND_STEEL_POWER_CURSE_POWER.description": "造成延迟伤害合计[blue]30%[/blue]的伤害。",
+    "RABBIT_AND_STEEL_POWER_CURSE_POWER.smartDescription": "造成延迟伤害合计[blue]30%[/blue]的伤害。",
+    "RABBIT_AND_STEEL_POWER_CURSE_POWER.title": "诅咒",
+    "RABBIT_AND_STEEL_POWER_OMEGA_CHARGE_POWER.description": "下一张攻击牌造成[blue]3[/blue]倍伤害。",
+    "RABBIT_AND_STEEL_POWER_OMEGA_CHARGE_POWER.title": "终极充能",
+    "RABBIT_AND_STEEL_POWER_OMEGA_CHARGE_POWER.smartDescription": "下一张攻击牌造成[blue]3[/blue]倍伤害。",
+    "RABBIT_AND_STEEL_POWER_CHARGE_POWER.description": "下一张攻击牌造成[blue]1.5倍伤害[/blue]。",
+    "RABBIT_AND_STEEL_POWER_CHARGE_POWER.title": "充能",
+    "RABBIT_AND_STEEL_POWER_CHARGE_POWER.smartDescription": "下一张攻击牌造成[blue]1.5倍伤害[/blue]。",
+    "RABBIT_AND_STEEL_POWER_SAP_POWER.description": "受到的伤害增加3点。",
+    "RABBIT_AND_STEEL_POWER_SAP_POWER.title": "劣化",
+    "RABBIT_AND_STEEL_POWER_SAP_POWER.smartDescription": "受到的伤害增加[blue]3[/blue]点。",
+    "RABBIT_AND_STEEL_POWER_VANISH_POWER.description": "避开一次攻击或下一张打出的攻击牌伤害提升[blue]30%[/blue]。",
+    "RABBIT_AND_STEEL_POWER_VANISH_POWER.title": "隐身",
+    "RABBIT_AND_STEEL_POWER_VANISH_POWER.smartDescription": "避开一次攻击或下一张打出的攻击牌伤害提升[blue]30%[/blue]。",
+    "RABBIT_AND_STEEL_POWER_GHOST_POWER.description": "获得的格挡值降低25%\n避开一次攻击或下一张打出的攻击牌伤害提升[blue]60%[/blue]。",
+    "RABBIT_AND_STEEL_POWER_GHOST_POWER.title": "鬼魂",
+    "RABBIT_AND_STEEL_POWER_GHOST_POWER.smartDescription": "获得的格挡值降低25%\n避开一次攻击或下一张打出的攻击牌伤害提升[blue]60%[/blue]。",
+    "RABBIT_AND_STEEL_POWER_BURN_POWER.description": "下回合开始时失去层数的生命。",
+    "RABBIT_AND_STEEL_POWER_BURN_POWER.title": "灼烧",
+    "RABBIT_AND_STEEL_POWER_BURN_POWER.smartDescription": "在你的下回合开始时其失去[blue]{Amount}[/blue]点生命。",
+    "RABBIT_AND_STEEL_POWER_STORMBEAST_POWER.description": "攻击模仿",
+    "RABBIT_AND_STEEL_POWER_STORMBEAST_POWER.title": "雷兽之力",
+    "RABBIT_AND_STEEL_POWER_STORMBEAST_POWER.smartDescription": "额外再造成一次攻击牌原本数值伤害",
+    "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.description": "所有牌消耗降至1",
+    "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.title": "孤独",
+    "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.smartDescription": "所有牌消耗降至1",
+    "RABBIT_AND_STEEL_POWER_DECAY_POWER.description": "回合开始时给予自身层数的中毒。",
+    "RABBIT_AND_STEEL_POWER_DECAY_POWER.title": "朽败 ",
+    "RABBIT_AND_STEEL_POWER_DECAY_POWER.smartDescription": "回合开始时给予自身层数的中毒。",
+    "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.description": "加速",
+    "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.title": "加速",
+    "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.smartDescription": "回合结束时保留你的手牌，并且在下回合开始时将你的能量重置为本回合结束时的能量值。"
+    ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.description": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.title": "时间魔法"
+    ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.smartDescription": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.title":"战术翻滚"
+    ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description":"获得{Block:diff()}点[gold]格挡[/gold]。\n在下个回合，获得{Block:diff()}点[gold]格挡[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartDescription":"获得{Block:diff()}点[gold]格挡[/gold]。\n在下个回合，获得{Block:diff()}点[gold]格挡[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.title":"鸦羽"
+    ,"RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.description":"当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.smartDescription":"当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_PERFORMER_POWER.title":"表演"
+    ,"RABBIT_AND_STEEL_POWER_PERFORMER_POWER.description":"你每打10张牌，抽2张牌。"
+    ,"RABBIT_AND_STEEL_POWER_PERFORMER_POWER.smartDescription":"你每打10张牌，抽2张牌。"
+}
