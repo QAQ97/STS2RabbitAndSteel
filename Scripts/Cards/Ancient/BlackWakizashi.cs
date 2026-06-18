@@ -4,22 +4,19 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using RabbitAndSteel.Scripts.CardPools;
-using RabbitAndSteel.Scripts.Characters;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace RabbitAndSteel.Scripts.Cards.Ancient;
 
 [RegisterCard(typeof(AncientCardPool))]
-
-[RegisterCharacterStarterCard(typeof(AncientCharacter), 4)]
-public class StrikeAncient : ModCardTemplate
+public class BlackWakizashi : ModCardTemplate
 {
-	private const int energyCost = 1;
+	private const int energyCost = 0;
 	private const CardType type = CardType.Attack;
-	private const CardRarity rarity = CardRarity.Basic;
+	private const CardRarity rarity = CardRarity.Common;
 	private const TargetType targetType = TargetType.AnyEnemy;
-	protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new[] { MyKeywords.pet };
 	private const bool shouldShowInCardLibrary = true;
 	public override CardAssetProfile AssetProfile => new(
 	PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"
@@ -28,7 +25,7 @@ public class StrikeAncient : ModCardTemplate
 		new DamageVar(6, ValueProp.Move)
 	];
 
-	public StrikeAncient() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+	public BlackWakizashi() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

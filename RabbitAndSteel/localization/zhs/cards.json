@@ -1,34 +1,34 @@
 {
-	"RABBIT_AND_STEEL_CARD_STRIKE_ANCIENT.title": "打击",
-	"RABBIT_AND_STEEL_CARD_STRIKE_ANCIENT.description": "造成{Damage:diff()}点伤害。",
-	"RABBIT_AND_STEEL_CARD_DEFEND_ANCIENT.title": "防御",
-	"RABBIT_AND_STEEL_CARD_DEFEND_ANCIENT.description": "获得{Block:diff()}点[gold]格挡[/gold]。",
-	"RABBIT_AND_STEEL_CARD_ABYSSAL_CALL.title": "深渊呼唤",
-	"RABBIT_AND_STEEL_CARD_ABYSSAL_CALL.description": "生成[gold]召唤物[/gold]。\n将此牌返回你的[gold]手牌[/gold]。",
-	"RABBIT_AND_STEEL_CARD_UNLEASHED.title": "释放",
-	"RABBIT_AND_STEEL_CARD_UNLEASHED.description": "对所有敌人造成{Damage:diff()}点伤害，并施加大量负面状态。",
-	"RABBIT_AND_STEEL_CARD_BLOOD_VIAL.title": "血瓶",
-	"RABBIT_AND_STEEL_CARD_BLOOD_VIAL.description": "使目标获得99层[gold]劣化[/gold]。",
-	"RABBIT_AND_STEEL_CARD_THIEF_COAT.title": "小偷外套",
-	"RABBIT_AND_STEEL_CARD_THIEF_COAT.description": "避开一次攻击或下一张打出的攻击牌伤害提升{IfUpgraded:show:[blue]60%[/blue],获得的格挡值降低25%。\n|[blue]30%[/blue]}。",
-	"RABBIT_AND_STEEL_CARD_FLAME_BOW.title": "火焰弓",
-	"RABBIT_AND_STEEL_CARD_FLAME_BOW.description": "造成{Damage:diff()}点伤害，并使目标获得等量于所造成伤害的[gold]灼烧[/gold]。",
-	"RABBIT_AND_STEEL_CARD_DARKMAGIC_BLADE.title": "暗魔剑",
-	"RABBIT_AND_STEEL_CARD_DARKMAGIC_BLADE.description": "对所有敌人造成{Damage:diff()}点伤害，并使它们获得{Curse:diff()}层[gold]诅咒[/gold]。",
-	"RABBIT_AND_STEEL_CARD_STRIKE_COMMAND.title": "攻击号令",
-	"RABBIT_AND_STEEL_CARD_STRIKE_COMMAND.description": "此卡也视为[gold]打击[/gold]\n造成{Damage:diff()}点伤害。",
-	"RABBIT_AND_STEEL_CARD_LONESOME_PENDANT.title": "孤独吊坠",
-	"RABBIT_AND_STEEL_CARD_LONESOME_PENDANT.description": "所有卡牌费用消耗降至1点。",
-	"RABBIT_AND_STEEL_CARD_HYDOURS_BLOB.title": "水合球",
-	"RABBIT_AND_STEEL_CARD_HYDOURS_BLOB.description": "给[blue]1[/blue]张牌添加[gold]召唤物[/gold]。",
-	"RABBIT_AND_STEEL_CARD_MAGICLOCK.title": "魔锁",
-	"RABBIT_AND_STEEL_CARD_MAGICLOCK.description": "战斗开始时自动打出。\n[gold]消耗[/gold]{IfUpgraded:show:|最少3张}并抽取同等数量的牌\n根据消耗的不同获得不同增益：\n技能/攻击/能力(非衍生/普通/基础)--2层[gold]力量[/gold]，\n[gold]深渊呼唤[/gold]--3层[gold]力量[/gold]和[gold]敏捷[/gold]",
-	"RABBIT_AND_STEEL_CARD_NIGHTINGALE_GOWN.title": "夜莺长裙",
-	"RABBIT_AND_STEEL_CARD_NIGHTINGALE_GOWN.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n你的下一张攻击牌造成三倍伤害。",
-	"RABBIT_AND_STEEL_CARD_CHEMIST_COAT.title": "炼金大衣",
-	"RABBIT_AND_STEEL_CARD_CHEMIST_COAT.description": "给予{PoisonPower:diff()}层[gold]中毒[/gold]。{IfUpgraded:show:给予{Decay}层[gold]朽败[/gold]。}\n获得目标[gold]DEBUFF[/gold]种类的{Block:diff()}点[gold]格挡[/gold]",
-	"RABBIT_AND_STEEL_CARD_STALEMATE.title": "僵持",
-	"RABBIT_AND_STEEL_CARD_STALEMATE.description": "立即结束友方回合，[gold]眩晕[/gold]所有敌方。\n直至下回合开始时将友方的能量与手牌[gold]保持不变[/gold]。"
+	"RABBIT_AND_STEEL_CARD_STRIKE_ANCIENT.title": "打击"
+	,"RABBIT_AND_STEEL_CARD_STRIKE_ANCIENT.description": "造成{Damage:diff()}点伤害。"
+	,"RABBIT_AND_STEEL_CARD_DEFEND_ANCIENT.title": "防御"
+	,"RABBIT_AND_STEEL_CARD_DEFEND_ANCIENT.description": "获得{Block:diff()}点[gold]格挡[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_ABYSSAL_CALL.title": "深渊呼唤"
+	,"RABBIT_AND_STEEL_CARD_ABYSSAL_CALL.description": "生成[gold]召唤物[/gold]。\n将此牌返回你的[gold]手牌[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_UNLEASHED.title": "释放"
+	,"RABBIT_AND_STEEL_CARD_STRIKE_COMMAND.title": "攻击号令"
+	,"RABBIT_AND_STEEL_CARD_STRIKE_COMMAND.description": "此卡也视为[gold]打击[/gold]\n造成{Damage:diff()}点伤害。"
+	,"RABBIT_AND_STEEL_CARD_UNLEASHED.description": "对所有敌人造成{Damage:diff()}点伤害，并施加大量负面状态。"
+	,"RABBIT_AND_STEEL_CARD_BLOOD_VIAL.title": "血瓶"
+	,"RABBIT_AND_STEEL_CARD_BLOOD_VIAL.description": "使目标获得99层[gold]劣化[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_THIEF_COAT.title": "小偷外套"
+	,"RABBIT_AND_STEEL_CARD_THIEF_COAT.description": "避开一次攻击或下一张打出的攻击牌伤害提升{IfUpgraded:show:[blue]60%[/blue],获得的格挡值降低25%。\n|[blue]30%[/blue]}。"
+	,"RABBIT_AND_STEEL_CARD_FLAME_BOW.title": "火焰弓"
+	,"RABBIT_AND_STEEL_CARD_FLAME_BOW.description": "造成{Damage:diff()}点伤害，并使目标获得等量于所造成伤害的[gold]灼烧[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_DARKMAGIC_BLADE.title": "暗魔剑"
+	,"RABBIT_AND_STEEL_CARD_DARKMAGIC_BLADE.description": "对所有敌人造成{Damage:diff()}点伤害，并使它们获得{Curse:diff()}层[gold]诅咒[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_LONESOME_PENDANT.title": "孤独吊坠"
+	,"RABBIT_AND_STEEL_CARD_LONESOME_PENDANT.description": "所有卡牌费用消耗降至1点。"
+	,"RABBIT_AND_STEEL_CARD_HYDOURS_BLOB.title": "水合球"
+	,"RABBIT_AND_STEEL_CARD_HYDOURS_BLOB.description": "给[blue]1[/blue]张牌添加[gold]召唤物[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_MAGICLOCK.title": "魔锁"
+	,"RABBIT_AND_STEEL_CARD_MAGICLOCK.description": "战斗开始时自动打出。\n[gold]消耗[/gold]{IfUpgraded:show:|最少3张}并抽取同等数量的牌\n根据消耗的不同获得不同增益：\n技能/攻击/能力(非衍生/普通/基础)--2层[gold]力量[/gold]，\n[gold]深渊呼唤[/gold]--3层[gold]力量[/gold]和[gold]敏捷[/gold]"
+	,"RABBIT_AND_STEEL_CARD_NIGHTINGALE_GOWN.title": "夜莺长裙"
+	,"RABBIT_AND_STEEL_CARD_NIGHTINGALE_GOWN.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n你的下一张攻击牌造成三倍伤害。"
+	,"RABBIT_AND_STEEL_CARD_CHEMIST_COAT.title": "炼金大衣"
+	,"RABBIT_AND_STEEL_CARD_CHEMIST_COAT.description": "给予{PoisonPower:diff()}层[gold]中毒[/gold]。{IfUpgraded:show:给予{Decay}层[gold]朽败[/gold]。}\n获得目标[gold]DEBUFF[/gold]种类的{Block:diff()}点[gold]格挡[/gold]"
+	,"RABBIT_AND_STEEL_CARD_STALEMATE.title": "僵持"
+	,"RABBIT_AND_STEEL_CARD_STALEMATE.description": "立即结束友方回合，[gold]眩晕[/gold]所有敌方。\n直至下回合开始时将友方的能量与手牌[gold]保持不变[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_TIMEMAGE_CAP.title": "时间法师帽子"
 	,"RABBIT_AND_STEEL_CARD_TIMEMAGE_CAP.description": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_CROWFEATER_HAIR_PIN.title":"鸦羽发卡"
@@ -39,4 +39,6 @@
 	,"RABBIT_AND_STEEL_CARD_METRONOME_BOOTS.description":"获得{Block:diff()}点[gold]格挡[/gold]。如果此牌是本回合打出的第奇数张牌，则抽1张牌。"
 	,"RABBIT_AND_STEEL_CARD_PERFORMER_SHOES.title":"舞蹈鞋"
 	,"RABBIT_AND_STEEL_CARD_PERFORMER_SHOES.description":"你每打10张牌，抽2张牌。"
+	,"RABBIT_AND_STEEL_CARD_BLACK_WAKIZASHI.title":"黑协差"
+	,"RABBIT_AND_STEEL_CARD_BLACK_WAKIZASHI.description":"造成{Damage:diff()}点伤害。"
 }

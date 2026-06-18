@@ -17,7 +17,6 @@ public class AbyssalCall : ModCardTemplate
     private const CardType type = CardType.Skill;
     private const CardRarity rarity = CardRarity.Event;
     private const TargetType targetType = TargetType.Self;
-
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Retain
