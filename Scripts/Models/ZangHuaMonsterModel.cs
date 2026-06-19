@@ -3,11 +3,12 @@ using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using STS2RitsuLib.Scaffolding.Content;
 
-public abstract class ZangHuaMonster : MonsterModel
+namespace RabbitAndSteel.Scripts.Models;
+public abstract class ZangHuaMonster : ModMonsterTemplate
 {
     protected abstract string GetCustomVisualPath();
 

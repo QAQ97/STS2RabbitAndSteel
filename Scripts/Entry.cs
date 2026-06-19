@@ -1,6 +1,4 @@
-using System;
 using System.Reflection;
-using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
@@ -9,8 +7,6 @@ using STS2RitsuLib.Interop;
 using Godot.Bridge;
 using RabbitAndSteel.Scripts.Cards.Ancient;
 using STS2RitsuLib.Patching.Core;
-using STS2RitsuLib.Patching.Models;
-using MegaCrit.Sts2.Core.Nodes;
 using RabbitAndSteel.Scripts.Patches;
 using STS2RitsuLib.RunData;
 using RabbitAndSteel.Scripts.Models;

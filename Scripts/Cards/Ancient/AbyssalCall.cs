@@ -37,7 +37,28 @@ public class AbyssalCall : ModCardTemplate
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
         Rng rng = Owner.PlayerRng.Rewards;
-        string petName = RollPet(rng);
+
+        // 1. 找到当前存活的宠物（任意类型）
+        var currentPet = Owner.Creature.CombatState.Allies
+            .FirstOrDefault(c => c.PetOwner == Owner && c.IsAlive);
+
+        Type? currentType = currentPet?.Monster?.GetType();
+
+        // 2. 随机一个不同于当前类型的宠物名称
+        string? petName = RollPet(rng, currentType);
+        if (petName == null)
+        {
+            // 没有可切换的类型，卡牌无效果（或播放失败特效）
+            return;
+        }
+
+        // 3. 安全移除旧宠物（数据 + 节点）
+        if (currentPet != null && currentPet.Monster?.GetType()?.Name != petName)
+        {
+            PetManager.RemovePetSafely(currentPet);
+        }
+
+        // 4. 召唤新宠物（此时不存在存活宠物，会进入全新召唤分支）
         switch (petName)
         {
             case "Hero":
@@ -66,12 +87,19 @@ public class AbyssalCall : ModCardTemplate
         return PileType.Hand;
     }
 
-    public static string RollPet(Rng rng)
+    public static string? RollPet(Rng rng, Type? currentPetType = null)
     {
         var choices = new WeightedList<string>();
-        choices.Add("Hero", 1);
-        choices.Add("Stormbeast", 1);
-        
+
+        if (currentPetType != typeof(Hero))
+            choices.Add("Hero", 1);
+        if (currentPetType != typeof(Stormbeast))
+            choices.Add("Stormbeast", 1);
+
+        // 如果所有宠物都被排除（比如只有一种宠物且恰好正在使用），返回 null
+        if (choices.Count == 0)
+            return null;
+
         return choices.GetRandom(rng, remove: true);
     }
     

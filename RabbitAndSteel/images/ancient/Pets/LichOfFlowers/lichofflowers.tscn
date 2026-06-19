@@ -103,7 +103,7 @@ animations = [{
 "texture": ExtResource("12_2q2ri")
 }],
 "loop": true,
-"name": &"idle_loop",
+"name": &"idle",
 "speed": 3.0
 }]
 
@@ -115,9 +115,8 @@ unique_name_in_owner = true
 position = Vector2(0.50000703, -181.50005)
 scale = Vector2(0.862, 0.862)
 sprite_frames = SubResource("SpriteFrames_23h42")
-animation = &"idle_loop"
-autoplay = "idle_loop"
-frame_progress = 0.09080339
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

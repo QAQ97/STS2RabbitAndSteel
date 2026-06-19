@@ -1,17 +1,15 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Animation;
-using MegaCrit.Sts2.Core.Bindings.MegaSpine;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.MonsterMoves.Intents;
+using Godot;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
+using RabbitAndSteel.Scripts.Models;
 using RabbitAndSteel.Scripts.Powers;
 using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Scaffolding.Visuals.StateMachine;
 
 namespace RabbitAndSteel.Scripts.Monsters.Pets
 {
     [RegisterMonster]
-    public class Stormbeast : ZangHuaMonster
+    public class Stormbeast : ZangHuaMonster,IModCreatureVisualsFactory, IModCreatureCombatAnimationStateMachineFactory
     {
         public override int MinInitialHp => 1;
         public override int MaxInitialHp => 1;
@@ -27,26 +25,24 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
             return new MonsterMoveStateMachine([nothing], nothing);
         }
 
-        public override CreatureAnimator GenerateAnimator(MegaSprite controller)
+    public ModAnimStateMachine? TryCreateCombatAnimationStateMachine(Node visualsRoot)
         {
-            var idle = new AnimState("idle_loop", true);
-            var attack = new AnimState("attack");
-            var hurt = new AnimState("hurt");
-            var die = new AnimState("die");
-            var cast = new AnimState("cast");
-            var deadLoop = new AnimState("dead_loop", true);
+            var builder = ModAnimStateMachineBuilder.Create();
+            builder.AddState("idle", loop: true).AsInitial();
+            builder.AddState("attack", loop: false).WithNext("idle");
+            builder.AddState("hurt", loop: false).WithNext("idle");
+            builder.AddState("cast", loop: false).WithNext("idle");
+            builder.AddState("die", loop: false);
+            builder
+                .AddBranch("idle", "Attack", "attack")
+                .AddBranch("idle", "Hit", "hurt")
+                .AddBranch("idle", "Cast", "cast")
+                .AddAnyState("Dead", "die")
+                .AddAnyState("Idle", "idle");
 
-            attack.NextState = idle;
-            hurt.NextState = idle;
-            die.NextState = deadLoop;
-
-            var animator = new CreatureAnimator(idle, controller);
-            animator.AddAnyState("Attack", attack);
-            animator.AddAnyState("Hit", hurt);
-            animator.AddAnyState("Dead", die);
-            animator.AddAnyState("Cast", cast);
-            return animator;
+            return builder.BuildForVisualsRoot(visualsRoot);
         }
-        public override Type DefaultPowerType => typeof(StormbeastPower);
+
+        public override Type DefaultPowerType => typeof(Doppelganger);
     }
 }

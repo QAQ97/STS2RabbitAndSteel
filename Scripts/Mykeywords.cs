@@ -1,5 +1,4 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
-using RabbitAndSteel.Scripts;
 using STS2RitsuLib.Content;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Keywords;

@@ -27,6 +27,10 @@ public class TimemageCapPower : ModPowerTemplate
 			for (int i = 0; i < base.Amount; i++)
 			{
 				CardModel card = combatState.CreateCard<Stalemate>(base.Owner.Player);
+				if (!card.EnergyCost.CostsX && card.EnergyCost.GetWithModifiers(CostModifiers.None) >= 0)
+				{
+					card.EnergyCost.AddThisCombat(1);
+				}
 				await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, base.Owner.Player);
 			}
 		}

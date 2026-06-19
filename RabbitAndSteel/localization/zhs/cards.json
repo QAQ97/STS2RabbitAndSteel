@@ -30,7 +30,7 @@
 	,"RABBIT_AND_STEEL_CARD_STALEMATE.title": "僵持"
 	,"RABBIT_AND_STEEL_CARD_STALEMATE.description": "立即结束友方回合，[gold]眩晕[/gold]所有敌方。\n直至下回合开始时将友方的能量与手牌[gold]保持不变[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_TIMEMAGE_CAP.title": "时间法师帽子"
-	,"RABBIT_AND_STEEL_CARD_TIMEMAGE_CAP.description": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_TIMEMAGE_CAP.description": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]，其耗能增加1{Energy:energyIcons()}。"
 	,"RABBIT_AND_STEEL_CARD_CROWFEATER_HAIR_PIN.title":"鸦羽发卡"
 	,"RABBIT_AND_STEEL_CARD_CROWFEATER_HAIR_PIN.description":"当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_MOON_PENDANT.title":"月光吊坠"
@@ -38,7 +38,7 @@
 	,"RABBIT_AND_STEEL_CARD_METRONOME_BOOTS.title":"节拍靴子"
 	,"RABBIT_AND_STEEL_CARD_METRONOME_BOOTS.description":"获得{Block:diff()}点[gold]格挡[/gold]。如果此牌是本回合打出的第奇数张牌，则抽1张牌。"
 	,"RABBIT_AND_STEEL_CARD_PERFORMER_SHOES.title":"舞蹈鞋"
-	,"RABBIT_AND_STEEL_CARD_PERFORMER_SHOES.description":"你每打10张牌，抽2张牌。"
+	,"RABBIT_AND_STEEL_CARD_PERFORMER_SHOES.description":"你每打15张牌，抽2张牌。"
 	,"RABBIT_AND_STEEL_CARD_BLACK_WAKIZASHI.title":"黑协差"
 	,"RABBIT_AND_STEEL_CARD_BLACK_WAKIZASHI.description":"造成{Damage:diff()}点伤害。"
 }

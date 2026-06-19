@@ -20,9 +20,9 @@
     "RABBIT_AND_STEEL_POWER_BURN_POWER.description": "下回合开始时失去层数的生命。",
     "RABBIT_AND_STEEL_POWER_BURN_POWER.title": "灼烧",
     "RABBIT_AND_STEEL_POWER_BURN_POWER.smartDescription": "在你的下回合开始时其失去[blue]{Amount}[/blue]点生命。",
-    "RABBIT_AND_STEEL_POWER_STORMBEAST_POWER.description": "攻击模仿",
-    "RABBIT_AND_STEEL_POWER_STORMBEAST_POWER.title": "雷兽之力",
-    "RABBIT_AND_STEEL_POWER_STORMBEAST_POWER.smartDescription": "额外再造成一次攻击牌原本数值伤害",
+    "RABBIT_AND_STEEL_POWER_DOPPELGENGER.description": "攻击模仿",
+    "RABBIT_AND_STEEL_POWER_DOPPELGENGER.title": "二重身",
+    "RABBIT_AND_STEEL_POWER_DOPPELGENGER.smartDescription": "额外再造成一次攻击牌原本数值伤害",
     "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.description": "所有牌消耗降至1",
     "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.title": "孤独",
     "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.smartDescription": "所有牌消耗降至1",
@@ -34,7 +34,7 @@
     "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.smartDescription": "回合结束时保留你的手牌，并且在下回合开始时将你的能量重置为本回合结束时的能量值。"
     ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.description": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。"
     ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.title": "时间魔法"
-    ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.smartDescription": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.smartDescription": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold],其费用增加1{Energy:energyIcons()}。"
     ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.title":"战术翻滚"
     ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description":"获得{Block:diff()}点[gold]格挡[/gold]。\n在下个回合，获得{Block:diff()}点[gold]格挡[/gold]。"
     ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartDescription":"获得{Block:diff()}点[gold]格挡[/gold]。\n在下个回合，获得{Block:diff()}点[gold]格挡[/gold]。"

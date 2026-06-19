@@ -1,13 +1,10 @@
-using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using STS2RitsuLib.Interop.AutoRegistration;
-using RabbitAndSteel.Scripts.Monsters.Pets;
 using STS2RitsuLib.Models;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using RabbitAndSteel.Scripts.Powers;
+using RabbitAndSteel.Scripts.Models;
 
 namespace RabbitAndSteel.Scripts
 {

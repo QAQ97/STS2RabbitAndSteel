@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://d04ud4h8mm6vk"]
+
+[ext_resource type="Texture2D" uid="uid://6cjqdr6jd6nj" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image0.png" id="1_qpmtq"]
+[ext_resource type="Texture2D" uid="uid://bd8f5hr0don0i" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image1.png" id="2_pxd1m"]
+[ext_resource type="Texture2D" uid="uid://boykkj0go0jms" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image2.png" id="3_vwbi2"]
+[ext_resource type="Texture2D" uid="uid://dxn2djccm6jye" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image3.png" id="4_p3n26"]
+[ext_resource type="Texture2D" uid="uid://b03f524js480k" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image4.png" id="5_ah2ul"]
+[ext_resource type="Texture2D" uid="uid://bv75r7e4xsfod" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image5.png" id="6_18vjj"]
+[ext_resource type="Texture2D" uid="uid://fjgcoiru3dyy" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image6.png" id="7_iwd4j"]
+[ext_resource type="Texture2D" uid="uid://doven2vjs7xdo" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image7.png" id="8_t7i3d"]
+[ext_resource type="Texture2D" uid="uid://cy84jfu2u7uwp" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image8.png" id="9_dtnqc"]
+[ext_resource type="Texture2D" uid="uid://cowk72ostdlm5" path="res://RabbitAndSteel/images/Animate/ReminiscenceBird/image9.png" id="10_s4jhx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6yna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qpmtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pxd1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vwbi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p3n26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ah2ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_18vjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iwd4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t7i3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dtnqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s4jhx")
+}],
+"loop": true,
+"name": &"cast",
+"speed": 5.0
+}]
+
+[node name="ReminiscenceBird" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v6yna")
+animation = &"cast"
+frame_progress = 0.014357534

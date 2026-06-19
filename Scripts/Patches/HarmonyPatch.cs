@@ -1,7 +1,6 @@
-using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
-using RabbitAndSteel.Scripts.Monsters;
+using RabbitAndSteel.Scripts.Models;
 using STS2RitsuLib.Patching.Models;
 
 namespace RabbitAndSteel.Scripts.Patches

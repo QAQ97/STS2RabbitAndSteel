@@ -14,7 +14,7 @@ namespace RabbitAndSteel.Scripts.Cards.Ancient;
 [RegisterCard(typeof(TokenCardPool))]
 public class Stalemate : ModCardTemplate
 {
-    private const int energyCost = 1;
+    private const int energyCost = 0;
     private const CardType type = CardType.Skill;
     private const CardRarity rarity = CardRarity.Token;
     private const TargetType targetType = TargetType.Self;

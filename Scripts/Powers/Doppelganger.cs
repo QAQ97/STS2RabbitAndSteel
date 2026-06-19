@@ -5,13 +5,14 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using RabbitAndSteel.Scripts.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace RabbitAndSteel.Scripts.Powers;
 
 [RegisterPower]
-public sealed class StormbeastPower : ModPowerTemplate, IPetKeywordHandler
+public sealed class Doppelganger : ModPowerTemplate, IPetKeywordHandler
 {
     private static readonly Random _random = new();
     public override PowerType Type => PowerType.Buff;
