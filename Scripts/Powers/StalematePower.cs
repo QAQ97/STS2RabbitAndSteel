@@ -1,53 +1,57 @@
-using STS2RitsuLib.Interop.AutoRegistration;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
-
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
-using MegaCrit.Sts2.Core.Entities.Players;
 
 namespace RabbitAndSteel.Scripts.Powers;
-[RegisterPower]
 
+[RegisterPower]
 public sealed class StalematePower : ModPowerTemplate
 {
     public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerAssetProfile AssetProfile => new(
+        IconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}1.png",
+        BigIconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}0.png"
+    );
 
-    public override PowerStackType StackType => PowerStackType.Counter;
-        public override PowerAssetProfile AssetProfile => new(
-    IconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}1.png",
-    BigIconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}0.png"
-);
-    public override async Task AfterAutoPrePlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)
+
+    private decimal savedEnergy;
+
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
-        if (player != base.Owner.Player)
-        {
+        if (side != CombatSide.Player)
             return;
-        }
 
-        decimal restoreEnergy = base.Amount - 1m;
-        if (restoreEnergy < 0m)
-        {
-            restoreEnergy = 0m;
-        }
+        savedEnergy = Owner.Player.PlayerCombatState?.Energy ?? 0m;
+    }
 
-        await PlayerCmd.SetEnergy(restoreEnergy, player);
+    public override async Task AfterEnergyReset(Player player)
+    {
+        if (player != Owner.Player)
+            return;
+
+        await PlayerCmd.SetEnergy(savedEnergy, player);
+    }
+
+    public override bool ShouldDraw(Player player, bool fromHandDraw)
+    {
+        if (player != Owner.Player)
+            return true;
+        return false;
+    }
+
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (player != Owner.Player)
+            return;
+
         await PowerCmd.Remove(this);
     }
-    public override decimal ModifyMaxEnergy(Player player, decimal amount)
-	{
-		if (player != base.Owner.Player)
-		{
-			return amount;
-		}
-		return -1m;
-	}
-    public override decimal ModifyHandDraw(Player player, decimal count)
-	{
-		if (player != base.Owner.Player)
-		{
-			return count;
-		}
-		return -1m;
-	}
 }

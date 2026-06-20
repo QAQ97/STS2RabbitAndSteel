@@ -105,16 +105,6 @@ public class AncientCharacter : ModCharacterTemplate<AncientCardPool, AncientRel
 	// 自动转换人物场景，让你不需要手动挂脚本。复制即可。
 	protected override NCreatureVisuals? TryCreateCreatureVisuals() => RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>(AssetProfile.Scenes!.VisualsPath!);
 
-	// 初始卡组，或者在卡牌类上用RegisterCharacterStarterCard就不用写这个
-	// protected override IEnumerable<StartingDeckEntry> StartingDeckEntries => [
-	//     new(typeof(TestCard), 5)
-	// ];
-
-	// 初始遗物，或者在遗物类上用RegisterCharacterStarterRelic就不用写这个
-	// protected override IEnumerable<Type> StartingRelicTypes => [
-	//     typeof(Akabeko)
-	// ];
-
 	// 攻击建筑师的攻击特效列表
 	public override List<string> GetArchitectAttackVfx() => [
 		// "vfx/vfx_attack_blunt",

@@ -55,7 +55,6 @@ public class FlameBow : ModCardTemplate
 	}
 	protected override void OnUpgrade()
 	{
-		base.OnUpgrade();
 		DynamicVars.Damage.UpgradeValueBy(3);
 	}
 }

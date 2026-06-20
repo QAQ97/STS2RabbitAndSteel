@@ -2,5 +2,9 @@
 .godot/
 /android/
 *.import
+
+LevitationRingInputController.cs
+LevitationRingInputController.uid
+
 !*.json
 !*.cs
