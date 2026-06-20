@@ -1,0 +1,75 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using RabbitAndSteel.Scripts.CardPools;
+using RabbitAndSteel.Scripts.Powers;
+using STS2RitsuLib.Combat.HandSize;
+using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Scaffolding.Content;
+
+namespace RabbitAndSteel.Scripts.Cards.Ancient;
+
+[RegisterCard(typeof(AncientCardPool))]
+public class ForkAndSpoon : ModCardTemplate, IMaxHandSizeModifier
+{
+    private const int energyCost = 1;
+    private const CardType type = CardType.Skill;
+    private const CardRarity rarity = CardRarity.Common;
+    private const TargetType targetType = TargetType.Self;
+    private const bool shouldShowInCardLibrary = true;
+    private int retainTurns = 0;
+    protected override bool ShouldGlowRedInternal => retainTurns == 0;
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar("RefreshTrigger", 0),
+    ];
+
+    public override CardAssetProfile AssetProfile => new(
+        PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"
+    );
+    public ForkAndSpoon() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary) { }
+
+
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+    {
+        if (side != CombatSide.Player)
+            return;
+
+        CardPile hand = PileType.Hand.GetPile(Owner);
+        if (hand.Cards.Contains(this))
+        {
+            retainTurns++;
+            base.DynamicVars["RefreshTrigger"].UpdateCardPreview(
+                this, CardPreviewMode.Normal, null, false
+            );
+        }
+
+        await Task.CompletedTask;
+    }
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await PowerCmd.Apply<ForkAndSpoonPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        retainTurns = 0;
+    }
+
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+    }
+
+    public int ModifyMaxHandSize(Player player, int currentMaxHandSize)
+    {
+        if (player == Owner && PileType.Hand.GetPile(Owner).Cards.Contains(this))
+            return currentMaxHandSize + 1;
+        return currentMaxHandSize;
+    }
+}

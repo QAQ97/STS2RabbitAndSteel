@@ -26,7 +26,8 @@ public class TimemageCap : ModCardTemplate
     {
     }
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("TimemageCap", 1)
+        new DynamicVar("TimemageCap", 1),
+        new EnergyVar(1)
     ];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromCard<Stalemate>()

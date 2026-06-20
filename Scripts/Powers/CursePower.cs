@@ -1,3 +1,4 @@
+using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,13 +8,14 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.ValueProps;
 using RabbitAndSteel.Scripts.Models;
+using STS2RitsuLib.Combat.HealthBars;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace RabbitAndSteel.Scripts.Powers;
 
 [RegisterPower]
-public class CursePower : ModPowerTemplate
+public class CursePower : ModPowerTemplate, IHealthBarForecastSource
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -90,5 +92,14 @@ public class CursePower : ModPowerTemplate
         {
             await PowerCmd.Remove(this);
         }
+    }
+
+    public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
+    {
+        return HealthBarForecasts.Single(
+            context.Creature.GetPowerAmount<BurnPower>(),
+            new Color(0.69f, 0.72f, 0.78f, 1f),
+            HealthBarForecastGrowthDirection.FromRight
+        );
     }
 }

@@ -38,12 +38,12 @@ public class PajamaHat : ModCardTemplate
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        var template = ModelDb.Card<Stalemate>();     
-        if (base.IsUpgraded)
-		{
-			CardCmd.Upgrade(template);
-		}
+        var template = ModelDb.Card<Stalemate>();
         var card = Owner.Creature.CombatState.CreateCard(template, Owner);
+        if (base.IsUpgraded)
+        {
+            CardCmd.Upgrade(card);
+        }
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
     }
 

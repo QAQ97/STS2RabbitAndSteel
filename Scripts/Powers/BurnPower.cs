@@ -1,15 +1,17 @@
+using Godot;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
+using STS2RitsuLib.Combat.HealthBars;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace RabbitAndSteel.Scripts.Powers;
 
 [RegisterPower]
-public class BurnPower : ModPowerTemplate
+public class BurnPower : ModPowerTemplate, IHealthBarForecastSource
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -22,5 +24,14 @@ public class BurnPower : ModPowerTemplate
     {
         await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner, base.Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
 		await PowerCmd.Remove(this);
+    }
+
+    public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
+    {
+        return HealthBarForecasts.Single(
+            context.Creature.GetPowerAmount<BurnPower>(),
+            new Color(1.0f, 0.30f, 0.0f, 1f),
+            HealthBarForecastGrowthDirection.FromRight
+        );
     }
 }

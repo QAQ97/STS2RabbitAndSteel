@@ -20,9 +20,9 @@
     "RABBIT_AND_STEEL_POWER_BURN_POWER.description": "下回合开始时失去层数的生命。",
     "RABBIT_AND_STEEL_POWER_BURN_POWER.title": "灼烧",
     "RABBIT_AND_STEEL_POWER_BURN_POWER.smartDescription": "在你的下回合开始时其失去[blue]{Amount}[/blue]点生命。",
-    "RABBIT_AND_STEEL_POWER_DOPPELGENGER.description": "攻击模仿",
-    "RABBIT_AND_STEEL_POWER_DOPPELGENGER.title": "二重身",
-    "RABBIT_AND_STEEL_POWER_DOPPELGENGER.smartDescription": "额外再造成一次攻击牌原本数值伤害",
+    "RABBIT_AND_STEEL_POWER_DOPPELGANGER.description": "攻击模仿",
+    "RABBIT_AND_STEEL_POWER_DOPPELGANGER.title": "二重身",
+    "RABBIT_AND_STEEL_POWER_DOPPELGANGER.smartDescription": "额外再造成一次攻击牌原本数值伤害",
     "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.description": "所有牌消耗降至1",
     "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.title": "孤独",
     "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.smartDescription": "所有牌消耗降至1",
@@ -44,4 +44,7 @@
     ,"RABBIT_AND_STEEL_POWER_PERFORMER_POWER.title":"表演"
     ,"RABBIT_AND_STEEL_POWER_PERFORMER_POWER.description":"你每打10张牌，抽2张牌。"
     ,"RABBIT_AND_STEEL_POWER_PERFORMER_POWER.smartDescription":"你每打10张牌，抽2张牌。"
+    ,"RABBIT_AND_STEEL_POWER_FORK_AND_SPOON_POWER.title":"叉子与汤勺"
+    ,"RABBIT_AND_STEEL_POWER_FORK_AND_SPOON_POWER.description":"你打出的下1张攻击牌或技能牌会被额外打出一次。"
+    ,"RABBIT_AND_STEEL_POWER_FORK_AND_SPOON_POWER.smartDescription":"你打出的下1张攻击牌或技能牌会被额外打出一次。"
 }
