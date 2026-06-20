@@ -97,7 +97,7 @@ public class CursePower : ModPowerTemplate, IHealthBarForecastSource
     public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
     {
         return HealthBarForecasts.Single(
-            context.Creature.GetPowerAmount<BurnPower>(),
+            context.Creature.GetPowerAmount<CursePower>(),
             new Color(0.69f, 0.72f, 0.78f, 1f),
             HealthBarForecastGrowthDirection.FromRight
         );
