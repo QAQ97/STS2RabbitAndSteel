@@ -17,7 +17,7 @@ public class WingedCap: ModCardTemplate
     private const int energyCost = 1;
     private const CardType type = CardType.Skill;
     private const CardRarity rarity = CardRarity.Common;
-    private const TargetType targetType = TargetType.AnyEnemy;
+    private const TargetType targetType = TargetType.Self;
     public override bool GainsBlock => true;
     private const bool shouldShowInCardLibrary = true;
     public override CardAssetProfile AssetProfile => new(
@@ -34,9 +34,8 @@ public class WingedCap: ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        Creature target = cardPlay.Target ?? base.Owner.Creature;
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<VulnerablePower>(choiceContext, target, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, base.Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

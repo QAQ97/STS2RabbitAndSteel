@@ -6,10 +6,10 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-    <!-- 改成你的杀戮尖塔2目录 -->
     <Sts2Dir>H:/steam/steamapps/common/Slay the Spire 2</Sts2Dir>
     <GodotExe>H:/Godot_v4.5.1-stable_mono_win64/Godot_v4.5.1-stable_mono_win64/Godot_v4.5.1-stable_mono_win64.exe</GodotExe>
     <Sts2DataDir>$(Sts2Dir)\data_sts2_windows_x86_64</Sts2DataDir>
+    <RitsuLibDeployDir>$(Sts2Dir)/mods/STS2-RitsuLib/</RitsuLibDeployDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,12 +22,9 @@
       <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
-
-    <Reference Include="STS2-RitsuLib">
-      <HintPath>$(Sts2Dir)/mods/STS2-RitsuLib/STS2-RitsuLib.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
+    <PackageReference Include="STS2.RitsuLib" Version="*" />
   </ItemGroup>
+
 
 
   <Target Name="Copy Mod" AfterTargets="PostBuildEvent">

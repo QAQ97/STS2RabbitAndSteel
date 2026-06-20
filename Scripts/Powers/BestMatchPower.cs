@@ -10,7 +10,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace RabbitAndSteel.Scripts.Powers;
 
 [RegisterPower]
-public class RabbitAndTankPower : ModPowerTemplate
+public class BestMatchPower : ModPowerTemplate
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -23,8 +23,8 @@ public class RabbitAndTankPower : ModPowerTemplate
 	{
 		if (side == base.Owner.Side)
 		{
-			await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(), base.Owner, base.Amount*7, base.Owner, null);
-            await PowerCmd.Apply<PlatingPower>(new ThrowingPlayerChoiceContext(), base.Owner, base.Amount*7, base.Owner, null);
+			await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(), base.Owner, base.Amount*10, base.Owner, null);
+            await PowerCmd.Apply<PlatingPower>(new ThrowingPlayerChoiceContext(), base.Owner, base.Amount*5, base.Owner, null);
 		}
 	}
 }

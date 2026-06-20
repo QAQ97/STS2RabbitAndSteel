@@ -30,19 +30,28 @@ public sealed class Doppelganger : ModPowerTemplate, IPetKeywordHandler
         if (player != pet.PetOwner)
             return false;
 
-
         var enemies = player.Creature.CombatState.HittableEnemies;
         if (enemies == null || !enemies.Any())
             return false;
         var target = player.RunState.Rng.CombatTargets.NextItem(enemies);
         if (target == null)
             return false;
-        decimal baseDamage = cardPlay.Card.DynamicVars.Damage.EnchantedValue;
+
+        decimal baseDamage;
+        var dynVars = cardPlay.Card.DynamicVars;
+        if (dynVars.ContainsKey("Damage"))
+            baseDamage = dynVars.Damage.EnchantedValue;
+        else if (dynVars.ContainsKey("CalculatedDamage"))
+            baseDamage = dynVars.CalculatedDamage.Calculate(target);
+        else
+            baseDamage = 1m;
+
+
         if (baseDamage <= 0)
             baseDamage = 1m;
+
         if (pet.Monster is not ZangHuaMonster zangPet)
             return false;
-
 
         await CreatureCmd.TriggerAnim(pet, "Cast", 0.25f);
         VfxCmd.PlayOnCreature(target, "vfx/vfx_attack_slash");

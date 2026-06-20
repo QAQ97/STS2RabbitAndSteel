@@ -33,14 +33,14 @@ public class RabbitAndTank : ModCardTemplate
         ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("RabbitAndTank", 1),
+        new DynamicVar("BestMatch", 1),
     ];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<ArtifactPower>(choiceContext, base.Owner.Creature, 1m, Owner.Creature, this);
-		await PowerCmd.Apply<RabbitAndTankPower>(choiceContext, base.Owner.Creature, base.DynamicVars["RabbitAndTank"].BaseValue, base.Owner.Creature, this);
+		await PowerCmd.Apply<BestMatchPower>(choiceContext, base.Owner.Creature, base.DynamicVars["BestMatch"].BaseValue, base.Owner.Creature, this);
 	}
 
 	protected override void OnUpgrade()
