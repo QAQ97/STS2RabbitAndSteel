@@ -45,7 +45,6 @@ public class DarkmagicBlade : ModCardTemplate
     }
 	protected override void OnUpgrade()
 	{
-		base.OnUpgrade();
 		DynamicVars.Damage.UpgradeValueBy(1);
         base.DynamicVars["Curse"].UpgradeValueBy(1);
 	}

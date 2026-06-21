@@ -10,6 +10,8 @@ using STS2RitsuLib.Patching.Core;
 using RabbitAndSteel.Scripts.Patches;
 using STS2RitsuLib.RunData;
 using RabbitAndSteel.Scripts.Models;
+using System.Collections.Concurrent;
+using Godot;
 
 
 namespace RabbitAndSteel.Scripts;
@@ -18,8 +20,10 @@ namespace RabbitAndSteel.Scripts;
 public class Entry
 {
     public const string ModId = "RabbitAndSteel";
-        // 全局数据句柄
+    // 全局数据句柄
     public static RunSavedData<ChallengeRunState> Challenge = null!;
+    // 特效动画句柄
+    public static readonly ConcurrentDictionary<string, PackedScene> ModSceneCache = new();
     // 玩家数据句柄
     public static PlayerRunSavedData<PlayerRunState> Player = null!;
     public static readonly MegaCrit.Sts2.Core.Logging.Logger Logger = RitsuLibFramework.CreateLogger(ModId);
@@ -69,6 +73,19 @@ public class Entry
                     SyncLobbyOnChange = true, // 允许在大厅修改时同步给队友
                 });
         }
+
+        static void LoadScenes() {
+    //你的场景字符串列表
+    var paths = new List<string> {
+    };
+    foreach (var path in paths) {
+        if (ModSceneCache.ContainsKey(path)) continue;
+        var scene = ResourceLoader.Load<PackedScene>(path, null, ResourceLoader.CacheMode.Reuse);
+        if (scene != null) {
+            ModSceneCache[path] = scene;
+        }
+    }
+}
         
     }
 }
