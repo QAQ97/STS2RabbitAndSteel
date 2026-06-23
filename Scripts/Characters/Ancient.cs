@@ -54,8 +54,8 @@ public class AncientCharacter : ModCharacterTemplate<AncientCardPool, AncientRel
 			),
 				VisualCues: ModVisualCues.CueSet()
 			.Sequence("idle", seq => seq
-				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop1.png",0.3f)
-				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop2.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop1.png",0.4f)
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop2.png",0.4f).Loop()
 				)
 			.Sequence("hurt", seq => seq
 				.Frame("res://RabbitAndSteel/images/ancient/arts/hurt1.png",0.3f)
@@ -77,8 +77,8 @@ public class AncientCharacter : ModCharacterTemplate<AncientCardPool, AncientRel
                 .Frame("res://RabbitAndSteel/images/ancient/arts/cast3.png", 0.3f)
 				)
 			.Sequence("relaxed", seq => seq
-				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop1.png",0.3f)
-				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop2.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop1.png",0.4f)
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop2.png",0.4f)
 				)
             .Build(),
 			Ui: new(

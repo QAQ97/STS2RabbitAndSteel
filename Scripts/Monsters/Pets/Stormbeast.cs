@@ -45,8 +45,8 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
     }
     private static readonly VisualCueSet MonsterVisualCues = ModVisualCues.CueSet()
             .Sequence("idle", seq => seq
-				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop1.png",0.3f)
-				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop2.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop1.png",0.4f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop2.png",0.4f).Loop()
 				)
             .Single("hurt", "res://RabbitAndSteel/images/ancient/Pets/Stormbeast/hurt1.png",0.5f)
             .Sequence("attack", seq => seq
@@ -72,8 +72,8 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
                 .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast1.png", 0.2f)
 				)
             .Sequence("relaxed", seq => seq
-				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop1.png",0.3f)
-				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop2.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop1.png",0.4f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop2.png",0.4f)
 				)
             .Build();
 
