@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -43,9 +40,6 @@ public class FreezePower : ModPowerTemplate, IHealthBarForecastSource
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        if (side != base.Owner.Side)
-            return;
-
         int stacks = (int)base.DynamicVars["Freeze"].BaseValue;
         if (stacks <= 0)
             return;
@@ -64,9 +58,6 @@ public class FreezePower : ModPowerTemplate, IHealthBarForecastSource
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
-        if (side != base.Owner.Side)
-            return;
-
         int stacks = (int)base.DynamicVars["Freeze"].BaseValue;
         if (stacks <= 3)
             return;
@@ -85,7 +76,10 @@ public class FreezePower : ModPowerTemplate, IHealthBarForecastSource
             base.Owner,
             null
         );
-
+        if (side == CombatSide.Enemy && participants.Contains(base.Owner))
+        {
+            await PowerCmd.TickDownDuration(this);
+        }
     }
 
     public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)

@@ -50,7 +50,7 @@ public class VanishPower : ModPowerTemplate
 	}
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Type == CardType.Attack)
+        if (cardPlay.Card.Type == CardType.Attack && cardPlay.Card.Owner.Creature == base.Owner)
         {
             await PowerCmd.Decrement(this);
         }
