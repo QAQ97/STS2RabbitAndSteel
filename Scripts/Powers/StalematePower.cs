@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -22,30 +20,34 @@ public sealed class StalematePower : ModPowerTemplate
     );
 
 
-    private decimal savedEnergy;
-
-    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
-    {
-        if (side != CombatSide.Player)
-            return;
-
-        savedEnergy = Owner.Player.PlayerCombatState?.Energy ?? 0m;
-    }
-
-    public override async Task AfterEnergyReset(Player player)
-    {
-        if (player != Owner.Player)
-            return;
-
-        await PlayerCmd.SetEnergy(savedEnergy, player);
-    }
-
-    public override bool ShouldDraw(Player player, bool fromHandDraw)
-    {
-        if (player != Owner.Player)
-            return true;
-        return false;
-    }
+    public override decimal ModifyHandDraw(Player player, decimal count)
+	{
+		if (player != base.Owner.Player)
+		{
+			return count;
+		}
+		return 0m;
+	}
+    public override decimal ModifyMaxEnergy(Player player, decimal amount)
+	{
+		if (player != base.Owner.Player)
+		{
+			return amount;
+		}
+		return 0m;
+	}
+    public override bool ShouldPlayerResetEnergy(Player player)
+	{
+		if (player.Creature.CombatState.RoundNumber == 1)
+		{
+			return true;
+		}
+		if (player != base.Owner.Player)
+		{
+			return true;
+		}
+		return false;
+	}
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

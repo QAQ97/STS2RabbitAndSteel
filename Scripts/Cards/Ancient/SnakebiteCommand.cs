@@ -1,6 +1,5 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -17,7 +16,7 @@ public class SnakebiteCommand : ModCardTemplate
     private const int energyCost = 2;
     private const CardType type = CardType.Skill;
     private const CardRarity rarity = CardRarity.Common;
-    private const TargetType targetType = TargetType.Self;
+    private const TargetType targetType = TargetType.AnyEnemy;
     private const bool shouldShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
@@ -34,10 +33,11 @@ public class SnakebiteCommand : ModCardTemplate
         MyKeywords.pet
     ];
         protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("Decay", 4m),
+        new DynamicVar("Decay", 7m),
     ];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromPower<DecayPower>()
+        HoverTipFactory.FromPower<DecayPower>(),
+        HoverTipFactory.FromKeyword(CardKeyword.Retain)
         ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

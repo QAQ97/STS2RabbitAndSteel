@@ -53,10 +53,13 @@ public sealed class Doppelganger : ModPowerTemplate, IPetKeywordHandler
         if (pet.Monster is not ZangHuaMonster zangPet)
             return false;
 
+        decimal petStrengthBonus = pet.PetOwner?.Creature?.Powers.OfType<StrengthSpellPower>().Sum(p => p.Amount) ?? 0m;
+        decimal attackDamage = baseDamage + petStrengthBonus;
+
         await CreatureCmd.TriggerAnim(pet, "Cast", 0.25f);
         VfxCmd.PlayOnCreature(target, "vfx/vfx_attack_slash");
         await CreatureCmd.Damage(choiceContext, target,
-            new DamageVar(baseDamage, ValueProp.Move),
+            new DamageVar(attackDamage, ValueProp.Move),
             pet,
             cardPlay.Card);
 

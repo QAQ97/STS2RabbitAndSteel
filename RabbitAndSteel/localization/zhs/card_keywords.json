@@ -1,4 +1,8 @@
 {
-    "RABBIT_AND_STEEL_KEYWORD_PET.description": "执行召唤物相关的效果。",
     "RABBIT_AND_STEEL_KEYWORD_PET.title": "召唤物"
+    ,"RABBIT_AND_STEEL_KEYWORD_PET.description": "执行召唤物相关的效果。"
+    ,"RABBIT_AND_STEEL_KEYWORD_FORTUNE.title":"时运"
+    ,"RABBIT_AND_STEEL_KEYWORD_FORTUNE.description":"获得的金币翻倍。"
+    ,"RABBIT_AND_STEEL_KEYWORD_SUSTAIN.title":"留存"
+    ,"RABBIT_AND_STEEL_KEYWORD_SUSTAIN.description":"不计入手牌上限，回合结束仍然在手则执行额外效果"
 }

@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using RabbitAndSteel.Scripts.CardPools;
@@ -17,6 +18,9 @@ public class BlackWakizashi : ModCardTemplate
 	private const CardRarity rarity = CardRarity.Common;
 	private const TargetType targetType = TargetType.AnyEnemy;
     public override IEnumerable<CardKeyword> CanonicalKeywords => new[] { MyKeywords.pet };
+	protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
+        HoverTipFactory.FromKeyword(MyKeywords.pet)
+    ];
 	private const bool shouldShowInCardLibrary = true;
 	public override CardAssetProfile AssetProfile => new(
 	PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"

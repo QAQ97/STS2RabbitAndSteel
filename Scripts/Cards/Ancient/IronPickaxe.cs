@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -35,8 +33,11 @@ public class IronPickaxe : ModCardTemplate
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
         CardKeyword.Exhaust
     ];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
+        HoverTipFactory.FromKeyword(MyKeywords.pet)
+        ,HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
+        ];
 
-    // ---------- 矿物掉落定义 ----------
     private class OreDrop
     {
         public string Name { get; set; }
@@ -76,12 +77,13 @@ public class IronPickaxe : ModCardTemplate
 
         Rng rng = Owner.PlayerRng.Rewards;
         var chosenOre = WeightedRandom(rng, OreDrops, o => o.Weight);
-        VfxCmd.PlayOnCreature(cardPlay.Target, chosenOre.VfxPath);
-        Owner.Gold += chosenOre.GoldValue;
-    }
+        // VfxCmd.PlayOnCreature(cardPlay.Target, chosenOre.VfxPath);
 
-    protected override void OnUpgrade()
-    {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        int goldGain = chosenOre.GoldValue;
+        if (IsUpgraded && rng.NextFloat(1f) < 0.33f)
+        {
+            goldGain *= 2;
+        }
+        Owner.Gold += goldGain;
     }
 }

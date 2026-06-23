@@ -32,10 +32,16 @@ public class ThiefCoat : ModCardTemplate
         new DynamicVar("Vanish", 1)
         , new DynamicVar("Ghost", 1)
     ];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromPower<VanishPower>()
-        ,HoverTipFactory.FromPower<GhostPower>()
-        ];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips
+    {
+        get
+        {
+            if (IsUpgraded)
+                yield return HoverTipFactory.FromPower<GhostPower>();
+            else
+                yield return HoverTipFactory.FromPower<VanishPower>();
+        }
+    }
 
 
 

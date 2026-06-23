@@ -31,7 +31,7 @@
     "RABBIT_AND_STEEL_POWER_DECAY_POWER.smartDescription": "回合开始时给予自身层数的中毒。",
     "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.description": "加速",
     "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.title": "加速",
-    "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.smartDescription": "回合结束时保留你的手牌，并且在下回合开始时将你的能量重置为本回合结束时的能量值。"
+    "RABBIT_AND_STEEL_POWER_STALEMATE_POWER.smartDescription": "回合结束时保留你的手牌，并且在下回合开始时将你的能量重置为本回合结束时的能量值不再抽牌。"
     ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.description": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。"
     ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.title": "时间魔法"
     ,"RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.smartDescription": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold],其费用增加1{Energy:energyIcons()}。"
@@ -50,4 +50,11 @@
     ,"RABBIT_AND_STEEL_POWER_BEST_MATCH_POWER.title":"最佳搭配"
     ,"RABBIT_AND_STEEL_POWER_BEST_MATCH_POWER.description":"回合开始时获得5层[gold]覆甲[/gold]与10层[gold]活力[/gold]。"
     ,"RABBIT_AND_STEEL_POWER_BEST_MATCH_POWER.smartDescription":"回合开始时获得5层[gold]覆甲[/gold]与10层[gold]活力[/gold]。"
+    ,"RABBIT_AND_STEEL_POWER_STRENGTH_SPELL_POWER.title":"力量咒语"
+    ,"RABBIT_AND_STEEL_POWER_STRENGTH_SPELL_POWER.description":"增加宠物造成伤害值点。"
+    ,"RABBIT_AND_STEEL_POWER_STRENGTH_SPELL_POWER.smartDescription":"增加宠物造成伤害值点。"
+    ,"RABBIT_AND_STEEL_POWER_DEXTRITY_SPELL_POWER.title":"敏捷咒语"
+    ,"RABBIT_AND_STEEL_POWER_DEXTRITY_SPELL_POWER.description":"增加宠物获得格挡值点。"
+    ,"RABBIT_AND_STEEL_POWER_DEXTRITY_SPELL_POWER.smartDescription":"增加宠物获得格挡值点。"
+
 }

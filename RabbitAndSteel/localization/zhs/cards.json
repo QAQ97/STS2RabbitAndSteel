@@ -56,7 +56,9 @@
 	,"RABBIT_AND_STEEL_CARD_RABBIT_AND_TANK.title":"兔子与坦克"
 	,"RABBIT_AND_STEEL_CARD_RABBIT_AND_TANK.description":"获得1层[gold]人工制品[/gold]，回合开始时获得5层[gold]覆甲[/gold]与10层[gold]活力[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_IRON_PICKAXE.title":"铁镐"
-	,"RABBIT_AND_STEEL_CARD_IRON_PICKAXE.description":"造成{Damage:diff()}点伤害，敌人随机掉落[gold]金币[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_IRON_PICKAXE.description":"造成{Damage:diff()}点伤害，敌人随机掉落[gold]金币[/gold]，{IfUpgraded:show:概率触发[purple]时运[/purple]}。"
 	,"RABBIT_AND_STEEL_CARD_SNAKEBITE_COMMAND.title":"号令蛇咬"
-	,"RABBIT_AND_STEEL_CARD_SNAKEBITE_COMMAND.description":"给予{Decay}层[gold]朽败[/gold]"
+	,"RABBIT_AND_STEEL_CARD_SNAKEBITE_COMMAND.description":"给予{Decay}层[gold]朽败[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_RED_FANCIFUL_BOOK.title":"奇幻之书-红"
+	,"RABBIT_AND_STEEL_CARD_RED_FANCIFUL_BOOK.description":"此卡存在于手牌时，回合开始时获得{Energy:energyIcons()}，每回合少抽1张牌。"
 }

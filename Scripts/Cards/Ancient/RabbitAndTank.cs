@@ -26,12 +26,19 @@ public class RabbitAndTank : ModCardTemplate
     public RabbitAndTank() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromPower<ArtifactPower>(),
-        HoverTipFactory.FromPower<VigorPower>(),
-        HoverTipFactory.FromPower<PlatingPower>()
-        ];
-
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips
+    {
+        get
+        {
+            yield return HoverTipFactory.FromPower<ArtifactPower>();
+            yield return HoverTipFactory.FromPower<VigorPower>();
+            yield return HoverTipFactory.FromPower<PlatingPower>();
+            if (IsUpgraded)
+            {
+                yield return HoverTipFactory.FromKeyword(CardKeyword.Innate);
+            }
+        }
+    }
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DynamicVar("BestMatch", 1),
     ];

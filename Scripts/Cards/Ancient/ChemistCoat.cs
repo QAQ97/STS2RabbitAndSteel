@@ -33,12 +33,17 @@ public class ChemistCoat : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<PoisonPower>(3m),
         new DynamicVar("Decay", 2m),
-        new BlockVar(4, ValueProp.Move)
+        new BlockVar(5, ValueProp.Move)
     ];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromPower<PoisonPower>()
-        ,HoverTipFactory.FromPower<DecayPower>()
-        ];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips
+    {
+        get
+        {
+            yield return HoverTipFactory.FromPower<PoisonPower>();
+            if (IsUpgraded)
+                yield return HoverTipFactory.FromPower<DecayPower>();
+        }
+    }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

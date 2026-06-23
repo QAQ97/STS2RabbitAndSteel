@@ -34,8 +34,15 @@ public sealed class DodgeRollPower : ModPowerTemplate, IPetKeywordHandler
         var player = cardPlay.Card.Owner;
         if (player != pet.PetOwner)
             return false;
+        decimal baseActual = await CreatureCmd.GainBlock(playerCreature, base.DynamicVars.Block, cardPlay);
 
-        decimal actualBlock = await CreatureCmd.GainBlock(playerCreature, base.DynamicVars.Block, cardPlay);
+        decimal petDexAmount = pet.PetOwner?.Creature?.Powers.OfType<DexteritySpellPower>().Sum(p => p.Amount) ?? 0m;
+        decimal extraActual = 0m;
+        if (petDexAmount > 0m)
+        {
+            extraActual = await CreatureCmd.GainBlock(playerCreature, new BlockVar(petDexAmount, ValueProp.Move), cardPlay);
+        }
+        decimal actualBlock = baseActual + extraActual;
         await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, playerCreature, actualBlock, playerCreature, cardPlay.Card);
         await CreatureCmd.TriggerAnim(pet, "Cast", 0.25f);
 
