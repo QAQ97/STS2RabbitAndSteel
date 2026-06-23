@@ -19,7 +19,7 @@ public class RedFancifulBook : ModCardTemplate, IMaxHandSizeModifier
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new EnergyVar(2)
+        new EnergyVar(1)
     ];
 
     public override CardAssetProfile AssetProfile => new(
@@ -29,7 +29,7 @@ public class RedFancifulBook : ModCardTemplate, IMaxHandSizeModifier
 
     public override decimal ModifyMaxEnergy(Player player, decimal amount)
 	{
-		if (player != base.Owner)
+		if (player != base.Owner && PileType.Hand.GetPile(Owner).Cards.Contains(this))
 		{
 			return amount;
 		}
@@ -39,12 +39,15 @@ public class RedFancifulBook : ModCardTemplate, IMaxHandSizeModifier
 
 	public override decimal ModifyHandDraw(Player player, decimal count)
 	{
-		if (player != base.Owner)
+		if (player != base.Owner && PileType.Hand.GetPile(Owner).Cards.Contains(this))
 		{
 			return count;
 		}
 		return Math.Max(0m, count - 1m);
 	}
 
-
+    protected override void OnUpgrade()
+	{
+        base.DynamicVars.Energy.UpgradeValueBy(1);
+	}
 }

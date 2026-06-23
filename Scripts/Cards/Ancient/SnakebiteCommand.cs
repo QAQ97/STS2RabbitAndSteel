@@ -33,7 +33,7 @@ public class SnakebiteCommand : ModCardTemplate
         MyKeywords.pet
     ];
         protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("Decay", 7m),
+        new DynamicVar("Decay", 4m),
     ];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromPower<DecayPower>(),

@@ -1,5 +1,6 @@
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using RabbitAndSteel.Scripts.CardPools;
 using RabbitAndSteel.Scripts.PotionPools;
@@ -7,12 +8,13 @@ using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Scaffolding.Godot;
+using STS2RitsuLib.Scaffolding.Visuals;
 using STS2RitsuLib.Scaffolding.Visuals.StateMachine;
 
 namespace RabbitAndSteel.Scripts.Characters;
 
 [RegisterCharacter]
-public class AncientCharacter : ModCharacterTemplate<AncientCardPool, AncientRelicPool, AncientPotionPool>,IModCreatureVisualsFactory, IModCreatureCombatAnimationStateMachineFactory
+public class AncientCharacter : ModCharacterTemplate<AncientCardPool, AncientRelicPool, AncientPotionPool>
 {
 	
 	public override Color NameColor => new(0.5f, 0.5f, 1f);
@@ -22,23 +24,21 @@ public class AncientCharacter : ModCharacterTemplate<AncientCardPool, AncientRel
 	public override int StartingHp => 78;
 	public override int StartingGold => 15;
 
-	public ModAnimStateMachine? TryCreateCombatAnimationStateMachine(Node visualsRoot)
-		{
-			var builder = ModAnimStateMachineBuilder.Create();
-			builder.AddState("idle", loop: true).AsInitial();
-			builder.AddState("attack", loop: false).WithNext("idle");
-			builder.AddState("hurt", loop: false).WithNext("idle");
-			builder.AddState("cast", loop: false).WithNext("idle");
-			builder.AddState("die", loop: false);
-			builder
-				.AddBranch("idle", "Attack", "attack")
-				.AddBranch("idle", "Hit", "hurt")
-				.AddBranch("idle", "Cast", "cast")
-				.AddAnyState("Dead", "die")
-				.AddAnyState("Idle", "idle");
-
-			return builder.BuildForVisualsRoot(visualsRoot);
-		}
+	protected override ModAnimStateMachine? SetupCustomCombatAnimationStateMachine(
+	Node visualsRoot,
+	CharacterModel character)
+    {
+        return ModAnimStateMachines.StandardCue(
+            visualsRoot,
+            character,
+            "idle",
+            "die",false,
+            "hit",false,
+            "attack",false,
+            "cast",false,
+            "relaxed",false,
+            VisualCues);
+    }
 	public override CharacterAssetProfile AssetProfile => CharacterAssetProfiles.Merge(
 		CharacterAssetProfiles.Ironclad(),
 		new(
@@ -52,6 +52,35 @@ public class AncientCharacter : ModCharacterTemplate<AncientCardPool, AncientRel
 				// 篝火休息场景。
 				// RestSiteAnimPath: "res://Test/scenes/test_character_rest_site.tscn"
 			),
+				VisualCues: ModVisualCues.CueSet()
+			.Sequence("idle", seq => seq
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop1.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop2.png",0.3f)
+				)
+			.Sequence("hurt", seq => seq
+				.Frame("res://RabbitAndSteel/images/ancient/arts/hurt1.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/arts/hurt2.png",0.3f)
+				)
+            .Sequence("attack", seq => seq
+                .Frame("res://RabbitAndSteel/images/ancient/arts/attack1.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/attack2.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/attack3.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/attack4.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/attack5.png", 0.2f)
+				)
+			.Single("die", "res://RabbitAndSteel/images/ancient/arts/die.png",0.5f)
+			.Sequence("cast", seq => seq
+                .Frame("res://RabbitAndSteel/images/ancient/arts/cast3.png", 0.3f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/cast2.png", 0.3f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/cast1.png", 0.3f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/cast2.png", 0.3f)
+                .Frame("res://RabbitAndSteel/images/ancient/arts/cast3.png", 0.3f)
+				)
+			.Sequence("relaxed", seq => seq
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop1.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/arts/idle_loop2.png",0.3f)
+				)
+            .Build(),
 			Ui: new(
 				// 人物头像路径。
 				IconTexturePath: $"res://RabbitAndSteel/images/ancient/arts/Avatar.png",

@@ -1,14 +1,17 @@
 using Godot;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using RabbitAndSteel.Scripts.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Scaffolding.Visuals;
+using STS2RitsuLib.Scaffolding.Visuals.Definition;
 using STS2RitsuLib.Scaffolding.Visuals.StateMachine;
 
 namespace RabbitAndSteel.Scripts.Monsters.Pets
 {
     [RegisterMonster]
-    public class Dreadwyrm : ZangHuaMonster,IModCreatureVisualsFactory, IModCreatureCombatAnimationStateMachineFactory
+    public class Dreadwyrm : ZangHuaMonster
     {
         public override int MinInitialHp => 1;
         public override int MaxInitialHp => 1;
@@ -24,22 +27,54 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
             return new MonsterMoveStateMachine([nothing], nothing);
         }
 
-    public ModAnimStateMachine? TryCreateCombatAnimationStateMachine(Node visualsRoot)
-        {
-            var builder = ModAnimStateMachineBuilder.Create();
-            builder.AddState("idle", loop: true).AsInitial();
-            builder.AddState("attack", loop: false).WithNext("idle");
-            builder.AddState("hurt", loop: false).WithNext("idle");
-            builder.AddState("cast", loop: false).WithNext("idle");
-            builder.AddState("die", loop: false);
-            builder
-                .AddBranch("idle", "Attack", "attack")
-                .AddBranch("idle", "Hit", "hurt")
-                .AddBranch("idle", "Cast", "cast")
-                .AddAnyState("Dead", "die")
-                .AddAnyState("Idle", "idle");
-
-            return builder.BuildForVisualsRoot(visualsRoot);
-        }
+    	protected override ModAnimStateMachine? SetupCustomCombatAnimationStateMachine(
+	Node visualsRoot,
+	MonsterModel monster)
+    {
+        return ModAnimStateMachines.StandardCue(
+            visualsRoot,
+            null,
+            "idle",
+            "die",false,
+            "hit",false,
+            "attack",false,
+            "cast",false,
+            "relaxed",false,
+            MonsterVisualCues);
+    }
+    private static readonly VisualCueSet MonsterVisualCues = ModVisualCues.CueSet()
+            .Sequence("idle", seq => seq
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop1.png",0.5f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop2.png",0.5f)
+				)
+            .Single("hurt", "res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/hurt1.png",0.5f)
+            .Sequence("attack", seq => seq
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/attack1.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/attack2.png", 0.4f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/attack3.png", 0.4f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/attack4.png", 0.4f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/attack3.png", 0.4f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/attack2.png", 0.4f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm//attack1.png", 0.5f)
+				)
+			.Single("die", "res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/die.png",0.5f)
+			.Sequence("cast", seq => seq
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast1.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast2.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast3.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast4.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast3.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast4.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast3.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast4.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast2.png", 0.5f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/cast1.png", 0.5f)
+				)
+            .Sequence("relaxed", seq => seq
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop1.png",0.5f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop2.png",0.5f)
+				)
+            .Build();
+    
     }
 }

@@ -1,9 +1,12 @@
 using Godot;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using RabbitAndSteel.Scripts.Models;
 using RabbitAndSteel.Scripts.Powers;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Scaffolding.Visuals;
+using STS2RitsuLib.Scaffolding.Visuals.Definition;
 using STS2RitsuLib.Scaffolding.Visuals.StateMachine;
 
 namespace RabbitAndSteel.Scripts.Monsters.Pets
@@ -25,23 +28,54 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
             return new MonsterMoveStateMachine([nothing], nothing);
         }
 
-    public ModAnimStateMachine? TryCreateCombatAnimationStateMachine(Node visualsRoot)
-        {
-            var builder = ModAnimStateMachineBuilder.Create();
-            builder.AddState("idle", loop: true).AsInitial();
-            builder.AddState("attack", loop: false).WithNext("idle");
-            builder.AddState("hurt", loop: false).WithNext("idle");
-            builder.AddState("cast", loop: false).WithNext("idle");
-            builder.AddState("die", loop: false);
-            builder
-                .AddBranch("idle", "Attack", "attack")
-                .AddBranch("idle", "Hit", "hurt")
-                .AddBranch("idle", "Cast", "cast")
-                .AddAnyState("Dead", "die")
-                .AddAnyState("Idle", "idle");
-
-            return builder.BuildForVisualsRoot(visualsRoot);
-        }
+    protected override ModAnimStateMachine? SetupCustomCombatAnimationStateMachine(
+	Node visualsRoot,
+	MonsterModel monster)
+    {
+        return ModAnimStateMachines.StandardCue(
+            visualsRoot,
+            null,
+            "idle",
+            "die",false,
+            "hit",false,
+            "attack",false,
+            "cast",false,
+            "relaxed",false,
+            MonsterVisualCues);
+    }
+    private static readonly VisualCueSet MonsterVisualCues = ModVisualCues.CueSet()
+            .Sequence("idle", seq => seq
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop1.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop2.png",0.3f)
+				)
+            .Single("hurt", "res://RabbitAndSteel/images/ancient/Pets/Stormbeast/hurt1.png",0.5f)
+            .Sequence("attack", seq => seq
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/attack1.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/attack2.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/attack3.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/attack4.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/attack3.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/attack2.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast//attack1.png", 0.2f)
+				)
+			.Single("die", "res://RabbitAndSteel/images/ancient/Pets/Stormbeast/die.png",0.5f)
+			.Sequence("cast", seq => seq
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast1.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast2.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast3.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast4.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast3.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast4.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast3.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast4.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast2.png", 0.2f)
+                .Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/cast1.png", 0.2f)
+				)
+            .Sequence("relaxed", seq => seq
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop1.png",0.3f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Stormbeast/idle_loop2.png",0.3f)
+				)
+            .Build();
 
         public override Type DefaultPowerType => typeof(Doppelganger);
     }
