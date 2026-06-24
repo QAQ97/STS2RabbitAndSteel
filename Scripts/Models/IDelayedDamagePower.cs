@@ -13,6 +13,8 @@ public static class CreatureDelayedDamageExtensions
         return creature.GetPowerAmount<PoisonPower>() +
             creature.GetPowerAmount<BurnPower>() +
             creature.GetPowerAmount<CursePower>() +
+            creature.GetPowerAmount<FreezePower>() +
+            creature.GetPowerAmount<DeepFreezePower>() +
             creature.GetPowerAmount<DoomPower>();
     }
 }

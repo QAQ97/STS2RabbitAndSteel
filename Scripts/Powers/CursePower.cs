@@ -24,7 +24,7 @@ public class CursePower : ModPowerTemplate, IHealthBarForecastSource
         BigIconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}0.png"
     );
 
-    private const decimal DAMAGE_PERCENT = 0.3m;
+    private const decimal DAMAGE_PERCENT = 0.5m;
 
     public int NextTurnDamage => CalculateTotalDamageNextTurn();
 
