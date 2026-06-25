@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -24,26 +23,23 @@ public class FreezePower : ModPowerTemplate, IHealthBarForecastSource
         BigIconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}0.png"
     );
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("Freeze", 0m)
-    ];
-
     public override async Task AfterOrbEvoked(PlayerChoiceContext choiceContext, OrbModel orb, IEnumerable<Creature> targets)
     {
         if (orb.Owner == base.Owner.Player && orb is FrostOrb)
         {
-            base.DynamicVars["Freeze"].BaseValue++;
-            InvokeDisplayAmountChanged();
+           await PowerCmd.ModifyAmount(choiceContext, this, 1, base.Owner, null);
         }
         await Task.CompletedTask;
     }
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        int stacks = (int)base.DynamicVars["Freeze"].BaseValue;
-        if (stacks <= 0)
+        if (side == base.Owner.Side)
             return;
 
+        int stacks = (int)base.Amount;
+        if (stacks <= 0)
+            return;
 
         await CreatureCmd.Damage(
             new ThrowingPlayerChoiceContext(),
@@ -55,36 +51,33 @@ public class FreezePower : ModPowerTemplate, IHealthBarForecastSource
         );
     }
 
-
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+{
+    int stacks = (int)Amount; // 读取当前层数（只读属性可安全读取）
+    if (stacks <= 3) return;
+
+    int convertCount = stacks / 3;
+    if (convertCount <= 0) return;
+
+    await PowerCmd.ModifyAmount(choiceContext, this, -convertCount * 3, base.Owner, null);
+
+    await PowerCmd.Apply<DeepFreezePower>(
+        choiceContext,
+        base.Owner,
+        convertCount,
+        base.Owner,
+        null
+    );
+
+    if (side == CombatSide.Enemy && participants.Contains(base.Owner))
     {
-        int stacks = (int)base.DynamicVars["Freeze"].BaseValue;
-        if (stacks <= 3)
-            return;
-
-        int convertCount = stacks / 3;
-        if (convertCount <= 0)
-            return;
-
-        base.DynamicVars["Freeze"].BaseValue -= convertCount * 3;
-        InvokeDisplayAmountChanged();
-
-        await PowerCmd.Apply<DeepFreezePower>(
-            new ThrowingPlayerChoiceContext(),
-            base.Owner,
-            convertCount,
-            base.Owner,
-            null
-        );
-        if (side == CombatSide.Enemy && participants.Contains(base.Owner))
-        {
-            await PowerCmd.TickDownDuration(this);
-        }
+        await PowerCmd.TickDownDuration(this);
     }
+}
 
     public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
     {
-        int stacks = (int)base.DynamicVars["Freeze"].BaseValue;
+        int stacks = (int)base.Amount;
         if (stacks <= 0)
             return Enumerable.Empty<HealthBarForecastSegment>();
 
