@@ -1,16 +1,18 @@
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Random;
 using RabbitAndSteel.Scripts.Commands;
 using RabbitAndSteel.Scripts.Monsters.Pets;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
-using STS2RitsuLib.Utils;
 
 namespace RabbitAndSteel.Scripts.Cards.Ancient;
+
 [RegisterCard(typeof(EventCardPool))]
 public class AbyssalCall : ModCardTemplate
 {
@@ -18,20 +20,20 @@ public class AbyssalCall : ModCardTemplate
     private const CardType type = CardType.Skill;
     private const CardRarity rarity = CardRarity.Event;
     private const TargetType targetType = TargetType.Self;
+    private const bool shouldShowInCardLibrary = true;
+
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Retain
     ];
+
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromKeyword(CardKeyword.Retain)
     ];
 
-    private const bool shouldShowInCardLibrary = true;
-
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"
     );
-
 
     public AbyssalCall() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
@@ -41,71 +43,103 @@ public class AbyssalCall : ModCardTemplate
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        Rng rng = Owner.PlayerRng.Rewards;
+        // 1. 获取已解锁宠物列表（通过你的持久化访问方式）
+        var state = Entry.Player.Get(Owner); // 假设这是获取 PlayerRunState 的方法
+        if (state?.UnlockedPets == null || state.UnlockedPets.Count == 0)
+            return;
 
-        // 1. 找到当前存活的宠物（任意类型）
+        // 2. 过滤掉当前已存活的宠物（避免重复召唤同一类型）
         var currentPet = Owner.Creature.CombatState.Allies
             .FirstOrDefault(c => c.PetOwner == Owner && c.IsAlive);
+        string currentType = currentPet?.Monster?.GetType().Name;
 
-        Type? currentType = currentPet?.Monster?.GetType();
-
-        // 2. 随机一个不同于当前类型的宠物名称
-        string? petName = RollPet(rng, currentType);
-        if (petName == null)
-        {
-            // 没有可切换的类型，卡牌无效果（或播放失败特效）
+        var available = state.UnlockedPets.Where(p => p != currentType).ToList();
+        if (available.Count == 0)
             return;
-        }
 
-        // 3. 安全移除旧宠物（数据 + 节点）
-        if (currentPet != null && currentPet.Monster?.GetType()?.Name != petName)
+        string chosenPetType;
+
+        // 3. 如果只有一个可选，直接选择
+        if (available.Count == 1)
         {
-            PetManager.RemovePetSafely(currentPet);
+            chosenPetType = available[0];
+        }
+        else
+        {
+            // 多个可选：创建临时卡牌列表用于选择界面（使用 ModelDb，不直接 new）
+            var petCards = new List<CardModel>();
+            foreach (var petName in available)
+            {
+                CardModel? card = null;
+                switch (petName)
+                {
+                    case "Hero":
+                        card = ModelDb.Card<HeroCard>().ToMutable();
+                        break;
+                    case "Stormbeast":
+                        card = ModelDb.Card<StormbeastCard>().ToMutable();
+                        break;
+                }
+                if (card != null)
+                {
+                    card.Owner = Owner; // 设置拥有者，确保显示正确
+                    petCards.Add(card);
+                }
+            }
+
+            if (petCards.Count == 0)
+                return;
+
+            var prefs = new CardSelectorPrefs(
+                prompt: new LocString("card_selection", "ABYSSAL_CALL_CHOOSE_PET"),
+                minCount: 1,
+                maxCount: 1
+            );
+            var selected = await CardSelectCmd.FromSimpleGrid(choiceContext, petCards, Owner, prefs);
+            var chosenCard = selected.FirstOrDefault();
+            if (chosenCard == null)
+                return;
+
+            // 根据选中的卡牌类型确定宠物名称
+            chosenPetType = chosenCard switch
+            {
+                HeroCard => "Hero",
+                StormbeastCard => "Stormbeast",
+                _ => null
+            };
+            if (chosenPetType == null)
+                return;
         }
 
-        // 4. 召唤新宠物（此时不存在存活宠物，会进入全新召唤分支）
-        switch (petName)
+        // 4. 移除当前宠物（如果存在）
+        if (currentPet != null)
+            PetManager.RemovePetSafely(currentPet);
+
+        // 5. 召唤新宠物
+        switch (chosenPetType)
         {
             case "Hero":
                 await PetManager.SummonPet<Hero>(choiceContext, Owner, this);
                 break;
-            case "Dreadwyrm":
-                await PetManager.SummonPet<Dreadwyrm>(choiceContext, Owner, this);
-                break;
             case "Stormbeast":
                 await PetManager.SummonPet<Stormbeast>(choiceContext, Owner, this);
                 break;
+            case "Dreadwyrm":
+                await PetManager.SummonPet<Dreadwyrm>(choiceContext, Owner, this);
+                break;
         }
     }
+
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
     }
-    
+
     protected override PileType GetResultPileTypeForCardPlay()
     {
         PileType resultPileTypeForCardPlay = base.GetResultPileTypeForCardPlay();
         if (resultPileTypeForCardPlay != PileType.Discard)
-        {
             return resultPileTypeForCardPlay;
-        }
         return PileType.Hand;
     }
-
-    public static string? RollPet(Rng rng, Type? currentPetType = null)
-    {
-        var choices = new WeightedList<string>();
-
-        if (currentPetType != typeof(Hero))
-            choices.Add("Hero", 1);
-        if (currentPetType != typeof(Stormbeast))
-            choices.Add("Stormbeast", 1);
-
-        // 如果所有宠物都被排除（比如只有一种宠物且恰好正在使用），返回 null
-        if (choices.Count == 0)
-            return null;
-
-        return choices.GetRandom(rng, remove: true);
-    }
-    
 }
