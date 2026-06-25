@@ -32,14 +32,19 @@ public class ColdsteelShield: ModCardTemplate
         HoverTipFactory.FromPower<FreezePower>()
         ,HoverTipFactory.FromPower<DeepFreezePower>()
     ];
+    
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(12, ValueProp.Move)
+        , new DynamicVar("ColdsteelShieldPower", 1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var target = cardPlay.Target;
+        if (target == null) return;
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
+        await PowerCmd.Apply<VanishPower>(choiceContext, target,base.DynamicVars["Vanish"].IntValue,base.Owner.Creature, this);
         if (IsUpgraded)
         {
            await OrbCmd.Channel<FrostOrb>(choiceContext, base.Owner);
