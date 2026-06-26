@@ -36,7 +36,7 @@ public class ColdsteelShield: ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(12, ValueProp.Move)
-        , new DynamicVar("ColdsteelShieldPower", 1)
+        , new DynamicVar("ColdsteelShield", 1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -44,7 +44,7 @@ public class ColdsteelShield: ModCardTemplate
         var target = cardPlay.Target;
         if (target == null) return;
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<VanishPower>(choiceContext, target,base.DynamicVars["Vanish"].IntValue,base.Owner.Creature, this);
+        await PowerCmd.Apply<ColdsteelShieldPower>(choiceContext, target,base.DynamicVars["ColdsteelShield"].IntValue,base.Owner.Creature, this);
         if (IsUpgraded)
         {
            await OrbCmd.Channel<FrostOrb>(choiceContext, base.Owner);

@@ -2,6 +2,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using RabbitAndSteel.Scripts.Models;
+using RabbitAndSteel.Scripts.Powers;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Visuals;
 using STS2RitsuLib.Scaffolding.Visuals.Definition;
@@ -44,7 +45,7 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
     private static readonly VisualCueSet MonsterVisualCues = ModVisualCues.CueSet()
             .Sequence("idle", seq => seq
 				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop1.png",0.4f)
-				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop2.png",0.4f)
+				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop2.png",0.4f).Loop()
 				)
             .Single("hurt", "res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/hurt1.png",0.5f)
             .Sequence("attack", seq => seq
@@ -74,6 +75,7 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
 				.Frame("res://RabbitAndSteel/images/ancient/Pets/Dreadwyrm/idle_loop2.png",0.4f)
 				)
             .Build();
-    
+        
+        public override Type DefaultPowerType => typeof(GarnetFlare);
     }
 }

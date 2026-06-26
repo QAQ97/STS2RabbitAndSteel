@@ -79,6 +79,9 @@ public class AbyssalCall : ModCardTemplate
                     case "Stormbeast":
                         card = ModelDb.Card<StormbeastCard>().ToMutable();
                         break;
+                    case "Dreadwyrm":
+                        card = ModelDb.Card<DreadwyrmCard>().ToMutable();
+                        break;
                 }
                 if (card != null)
                 {
@@ -105,6 +108,7 @@ public class AbyssalCall : ModCardTemplate
             {
                 HeroCard => "Hero",
                 StormbeastCard => "Stormbeast",
+                DreadwyrmCard => "Dreadwyrm",
                 _ => null
             };
             if (chosenPetType == null)

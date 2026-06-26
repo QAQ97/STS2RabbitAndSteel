@@ -36,8 +36,8 @@
   "RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.smartdescription": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold],其费用增加1{Energy:energyIcons()}。",
   "RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.title": "时间魔法",
   "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.title": "战术翻滚",
-  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n在下个回合，获得{Block:diff()}点[gold]格挡[/gold]。",
-  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartdescription": "获得{Block:diff()}点[gold]格挡[/gold]。\n在下个回合，获得{Block:diff()}点[gold]格挡[/gold]。",
+  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description": "获得4点[gold]格挡[/gold]。\n在下个回合，获得4点[gold]格挡[/gold]。",
+  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartdescription": "获得4点[gold]格挡[/gold]。\n在下个回合，获得4点[gold]格挡[/gold]。",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.title": "鸦羽",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.description": "当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.smartdescription": "当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。",
@@ -65,4 +65,7 @@
   ,"RABBIT_AND_STEEL_POWER_COLDSTEEL_SHIELD_POWER.title": "寒铁盾牌"
   ,"RABBIT_AND_STEEL_POWER_COLDSTEEL_SHIELD_POWER.description": "这个回合每受到一次攻击，都会对攻击者施加一层[gold]冻结[/gold]。"
   ,"RABBIT_AND_STEEL_POWER_COLDSTEEL_SHIELD_POWER.smartdescription": "这个回合每受到一次攻击，都会对攻击者施加一层[gold]冻结[/gold]。"
+  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.title": "净化光束"
+  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.description": "对所有敌人造成4点伤害3次。并清除你手中的状态牌。"
+  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.smartdescription": "对所有敌人造成4点伤害3次。并清除你手中的状态牌。"
 }

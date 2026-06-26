@@ -67,8 +67,10 @@
 	,"RABBIT_AND_STEEL_CARD_GLACIER_SPEAR.description":"造成{Damage:diff()}点伤害，施加一层[gold]冻结[/gold]。\n{IfUpgraded:show:[gold]生成[/gold]一个[gold]冰霜[/gold]充能球。}"
 	,"RABBIT_AND_STEEL_CARD_COLDSTEEL_SHIELD.title":"寒铁盾牌"
 	,"RABBIT_AND_STEEL_CARD_COLDSTEEL_SHIELD.description":"获得{Block:diff()}点[gold]格挡[/gold]。你在这个回合每受到一次攻击，都会对攻击者施加一层[gold]冻结[/gold]。{IfUpgraded:show:[gold]生成[/gold]一个[gold]冰霜[/gold]充能球。}"
-	,"RABBIT_AND_STEEL_CARD_STORMBEAST_CARD.title":""
+	,"RABBIT_AND_STEEL_CARD_STORMBEAST_CARD.title":"雷兽"
 	,"RABBIT_AND_STEEL_CARD_STORMBEAST_CARD.description":""
-	,"RABBIT_AND_STEEL_CARD_HERO_CARD.title":""
+	,"RABBIT_AND_STEEL_CARD_HERO_CARD.title":"霜之王国的英雄"
 	,"RABBIT_AND_STEEL_CARD_HERO_CARD.description":""
+	,"RABBIT_AND_STEEL_CARD_DREADWYRM_CARD.title":"黑龙之女"
+	,"RABBIT_AND_STEEL_CARD_DREADWYRM_CARD.description":""
 }
