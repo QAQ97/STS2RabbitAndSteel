@@ -34,8 +34,10 @@ public class FreezePower : ModPowerTemplate, IHealthBarForecastSource
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        if (side == base.Owner.Side)
+        if (!participants.Contains(base.Owner))
+        {
             return;
+        }
 
         int stacks = (int)base.Amount;
         if (stacks <= 0)
@@ -49,31 +51,30 @@ public class FreezePower : ModPowerTemplate, IHealthBarForecastSource
             null,
             null
         );
+        if (base.Owner.IsAlive)
+        {
+            await PowerCmd.Decrement(this);
+        }
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
-{
-    int stacks = (int)Amount; // 读取当前层数（只读属性可安全读取）
-    if (stacks <= 3) return;
-
-    int convertCount = stacks / 3;
-    if (convertCount <= 0) return;
-
-    await PowerCmd.ModifyAmount(choiceContext, this, -convertCount * 3, base.Owner, null);
-
-    await PowerCmd.Apply<DeepFreezePower>(
-        choiceContext,
-        base.Owner,
-        convertCount,
-        base.Owner,
-        null
-    );
-
-    if (side == CombatSide.Enemy && participants.Contains(base.Owner))
     {
-        await PowerCmd.TickDownDuration(this);
+        int stacks = (int)Amount;
+        if (stacks <= 3) return;
+
+        int convertCount = stacks / 3;
+        if (convertCount <= 0) return;
+
+        await PowerCmd.ModifyAmount(choiceContext, this, -convertCount * 3, base.Owner, null);
+
+        await PowerCmd.Apply<DeepFreezePower>(
+            choiceContext,
+            base.Owner,
+            convertCount,
+            base.Owner,
+            null
+        );
     }
-}
 
     public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
     {

@@ -41,10 +41,8 @@ public class ColdsteelShield: ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var target = cardPlay.Target;
-        if (target == null) return;
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<ColdsteelShieldPower>(choiceContext, target,base.DynamicVars["ColdsteelShield"].IntValue,base.Owner.Creature, this);
+        await PowerCmd.Apply<ColdsteelShieldPower>(choiceContext, base.Owner.Creature,base.DynamicVars["ColdsteelShield"].IntValue,base.Owner.Creature, this);
         if (IsUpgraded)
         {
            await OrbCmd.Channel<FrostOrb>(choiceContext, base.Owner);
