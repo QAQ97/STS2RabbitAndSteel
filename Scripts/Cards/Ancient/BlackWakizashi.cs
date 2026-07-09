@@ -36,7 +36,7 @@ public class BlackWakizashi : ModCardTemplate
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 		await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-			.FromCard(this)
+			.FromCard(this, cardPlay)
 			.Targeting(cardPlay.Target!)
 			.Execute(choiceContext);
 	}

@@ -1,32 +1,33 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
-using RabbitAndSteel.Scripts.CardPools;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using RabbitAndSteel.Scripts.Models;
 using RabbitAndSteel.Scripts.Powers;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace RabbitAndSteel.Scripts.Cards.Ancient;
-[RegisterCard(typeof(AncientCardPool))]
-public class StormbeastCard : PetCardBase
+[RegisterCard(typeof(TokenCardPool))]
+public class LichOfFlowersCard : PetCardBase
 {
     private const int energyCost = 0;
     private const CardType type = CardType.Power;
-    private const CardRarity rarity = CardRarity.Ancient;
+    private const CardRarity rarity = CardRarity.Token;
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
     PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"
+    ,VisualStyle : CardVisualStyle.Ancient
     );
 
-    public StormbeastCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    public LichOfFlowersCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 
-    public override string PetTypeName => "Stormbeast";
+    public override string PetTypeName => "Hero";
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromPower<Doppelganger>()
+        HoverTipFactory.FromPower<ButterflyallyPower>()
         ];
 }

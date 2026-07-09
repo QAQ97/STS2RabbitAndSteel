@@ -46,7 +46,7 @@ public class CanaryCharm : ModCardTemplate, IMaxHandSizeModifier
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         int damage = (int)base.DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
         await DamageCmd.Attack(damage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

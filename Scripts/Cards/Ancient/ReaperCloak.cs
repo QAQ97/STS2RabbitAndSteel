@@ -36,7 +36,7 @@ public class ReaperCloak: ModCardTemplate
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         if (!cardPlay.Target.Monster.IntendsToAttack)
 		{
-			await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(3).FromCard(this)
+			await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(3).FromCard(this, cardPlay)
 			.Targeting(cardPlay.Target)
 			.WithHitFx("vfx/vfx_attack_slash")
 			.Execute(choiceContext);

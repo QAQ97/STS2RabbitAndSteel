@@ -21,7 +21,7 @@ public sealed class ChargePower : ModPowerTemplate
         BigIconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}0.png"
     );
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay cardPlay)
     {
         if (dealer == null)
             return 1m;

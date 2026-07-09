@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
@@ -18,7 +19,9 @@ public sealed class DodgeRollPower : ModPowerTemplate, IPetKeywordHandler
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(4, ValueProp.Move)
+        new CalculationBaseVar(4),
+        new CalculationExtraVar(1),
+        new CalculatedBlockVar(ValueProp.Move).WithMultiplier((CardModel _,Creature? creature)=>Owner.PetOwner?.Creature?.Powers.OfType<DexteritySpellPower>().Sum(p => p.Amount) ?? 0m)
     ];
 
     public override PowerAssetProfile AssetProfile => new(

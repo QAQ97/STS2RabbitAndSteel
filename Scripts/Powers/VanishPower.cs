@@ -28,7 +28,7 @@ public class VanishPower : ModPowerTemplate
 		}
 		return 0m;
 	}
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay cardPlay)
 	{
 		if (dealer == null)
 		{

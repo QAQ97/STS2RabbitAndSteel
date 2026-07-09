@@ -41,14 +41,14 @@ public sealed class GarnetFlare : ModPowerTemplate, IPetKeywordHandler
         await CardCmd.Exhaust(choiceContext, statusCard);
     }
 
-    decimal baseDamage = 4;
+    decimal baseDamage = 2;
     decimal petStrengthBonus = pet.PetOwner?.Creature?.Powers.OfType<StrengthSpellPower>().Sum(p => p.Amount) ?? 0m;
     decimal attackDamage = baseDamage + petStrengthBonus;
 
     await CreatureCmd.TriggerAnim(pet, "Cast", 0.25f);
     await DamageCmd.Attack(attackDamage)
         .WithHitCount(3)
-        .FromCard(cardPlay.Card)
+        .FromCard(cardPlay.Card, cardPlay)
         .TargetingAllOpponents(pet.CombatState)
         .Unpowered()
         .Execute(choiceContext);

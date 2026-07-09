@@ -11,7 +11,6 @@ using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace RabbitAndSteel.Scripts.Cards.Ancient;
-
 [RegisterCard(typeof(TokenCardPool))]
 public class Stalemate : ModCardTemplate
 {

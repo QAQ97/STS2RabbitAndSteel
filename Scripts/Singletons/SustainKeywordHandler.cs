@@ -26,23 +26,23 @@ namespace RabbitAndSteel.Scripts
         {
             if (side != CombatSide.Player) return;
 
-            var playerCreature = participants.FirstOrDefault(c => c.Side == CombatSide.Player && c.IsPlayer);
-            if (playerCreature == null) return;
-
-            var player = playerCreature.Player;
-            if (player == null) return;
-
-            var handPile = PileType.Hand.GetPile(player);
-            if (handPile == null) return;
-
-            // 遍历手牌，增加所有带有 sustain 关键词的卡牌计数
-            foreach (var card in handPile.Cards.ToList())
+            foreach (var playerCreature in participants.Where(c => c.Side == CombatSide.Player && c.IsPlayer))
             {
-                if (card.Keywords.Contains(MyKeywords.sustain))
+                var player = playerCreature.Player;
+                if (player == null) continue;
+
+                var handPile = PileType.Hand.GetPile(player);
+                if (handPile == null) continue;
+
+                // 遍历手牌，增加所有带有 sustain 关键词的卡牌计数
+                foreach (var card in handPile.Cards.ToList())
                 {
-                    var counter = _turnCounts.GetOrCreateValue(card);
-                    counter.Value++;
-                    Log.Info($"Sustain card {card.Id} now has {counter.Value} turns retained.");
+                    if (card.Keywords.Contains(MyKeywords.sustain))
+                    {
+                        var counter = _turnCounts.GetOrCreateValue(card);
+                        counter.Value++;
+                        Log.Info($"Sustain card {card.Id} now has {counter.Value} turns retained.");
+                    }
                 }
             }
 

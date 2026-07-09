@@ -1,4 +1,5 @@
 {
-    "ADD_PET_KEYWORD_ENCHANCEMENT": "给[blue]1[/blue]张牌添加[gold]召唤物[/gold]。",
-    "MAGICLOCK_SELECT_PROMPT": "选择要[gold]消耗[/gold]的卡牌"
+    "ADD_PET_KEYWORD_ENCHANCEMENT": "给[blue]1[/blue]张牌添加[gold]召唤物[/gold]。"
+    ,"MAGICLOCK_SELECT_PROMPT": "选择要[gold]消耗[/gold]的卡牌"
+    ,"ABYSSAL_CALL_CHOOSE_PET": "选择一只宠物召唤："
 }

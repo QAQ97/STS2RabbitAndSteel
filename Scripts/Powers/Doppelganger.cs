@@ -14,7 +14,6 @@ namespace RabbitAndSteel.Scripts.Powers;
 [RegisterPower]
 public sealed class Doppelganger : ModPowerTemplate, IPetKeywordHandler
 {
-    private static readonly Random _random = new();
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override PowerAssetProfile AssetProfile => new(
@@ -30,6 +29,12 @@ public sealed class Doppelganger : ModPowerTemplate, IPetKeywordHandler
         if (player != pet.PetOwner)
             return false;
 
+        if (pet.Monster is not ZangHuaMonster)
+            return false;
+
+        if (player.Creature == null)
+            return false;
+
         var enemies = player.Creature.CombatState.HittableEnemies;
         if (enemies == null || !enemies.Any())
             return false;
@@ -40,18 +45,14 @@ public sealed class Doppelganger : ModPowerTemplate, IPetKeywordHandler
         decimal baseDamage;
         var dynVars = cardPlay.Card.DynamicVars;
         if (dynVars.ContainsKey("Damage"))
-            baseDamage = dynVars.Damage.EnchantedValue;
+            baseDamage = dynVars.Damage.BaseValue;
         else if (dynVars.ContainsKey("CalculatedDamage"))
             baseDamage = dynVars.CalculatedDamage.Calculate(target);
         else
             baseDamage = 1m;
 
-
         if (baseDamage <= 0)
             baseDamage = 1m;
-
-        if (pet.Monster is not ZangHuaMonster zangPet)
-            return false;
 
         decimal petStrengthBonus = pet.PetOwner?.Creature?.Powers.OfType<StrengthSpellPower>().Sum(p => p.Amount) ?? 0m;
         decimal attackDamage = baseDamage + petStrengthBonus;
@@ -61,7 +62,8 @@ public sealed class Doppelganger : ModPowerTemplate, IPetKeywordHandler
         await CreatureCmd.Damage(choiceContext, target,
             new DamageVar(attackDamage, ValueProp.Move),
             pet,
-            cardPlay.Card);
+            cardPlay.Card,
+            cardPlay);
 
         return true;
     }

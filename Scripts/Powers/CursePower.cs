@@ -49,6 +49,7 @@ public class CursePower : ModPowerTemplate, IHealthBarForecastSource
             curse,
             ValueProp.Unblockable,
             null,
+            null,
             ModifyDamageHookType.All,
             CardPreviewMode.None,
             out _

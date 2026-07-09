@@ -139,11 +139,14 @@ public class AbyssalCall : ModCardTemplate
         EnergyCost.UpgradeBy(-1);
     }
 
-    protected override PileType GetResultPileTypeForCardPlay()
-    {
-        PileType resultPileTypeForCardPlay = base.GetResultPileTypeForCardPlay();
-        if (resultPileTypeForCardPlay != PileType.Discard)
-            return resultPileTypeForCardPlay;
-        return PileType.Hand;
-    }
+    protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
+	{
+		var (pileType, item) = base.GetResultPileTypeAndPositionForCardPlay();
+		if (pileType == PileType.Discard)
+		{
+			return (PileType.Hand, CardPilePosition.Bottom);
+		}
+		return (pileType, item);
+	}
+
 }

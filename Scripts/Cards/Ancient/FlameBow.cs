@@ -39,7 +39,7 @@ public class FlameBow : ModCardTemplate
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 		
 		AttackCommand attackCommand = await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-			.FromCard(this)
+			.FromCard(this, cardPlay)
 			.Targeting(cardPlay.Target)
 			.Execute(choiceContext);
 		int totalDamage = 0;

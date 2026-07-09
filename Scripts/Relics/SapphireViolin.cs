@@ -1,5 +1,6 @@
 
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -57,7 +58,7 @@ public class SapphireViolin : ModRelicTemplate
             return _damageTakenThisCombat;
         }
     }
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay cardPlay)
     {
         if (IsPermanentlyBroken) return 1m;
         if (!props.IsCardOrMonsterMove()) return 1m;
