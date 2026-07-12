@@ -16,7 +16,7 @@
 	,"RABBIT_AND_STEEL_CARD_FLAME_BOW.title": "火焰弓"
 	,"RABBIT_AND_STEEL_CARD_FLAME_BOW.description": "造成{Damage:diff()}点伤害，并使目标获得等量于所造成伤害的[gold]灼烧[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_DARKMAGIC_BLADE.title": "暗魔剑"
-	,"RABBIT_AND_STEEL_CARD_DARKMAGIC_BLADE.description": "对所有敌人造成{Damage:diff()}点伤害，并使它们获得{Curse:diff()}层[gold]诅咒[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_DARKMAGIC_BLADE.description": "对所有敌人造成{Damage:diff()}点伤害，并施加{Curse:diff()}层[gold]诅咒[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_LONESOME_PENDANT.title": "孤独吊坠"
 	,"RABBIT_AND_STEEL_CARD_LONESOME_PENDANT.description": "所有卡牌费用消耗降至1点。"
 	,"RABBIT_AND_STEEL_CARD_HYDOURS_BLOB.title": "水合球"
@@ -52,7 +52,7 @@
 	,"RABBIT_AND_STEEL_CARD_WINGED_CAP.title":"飞行帽子"
 	,"RABBIT_AND_STEEL_CARD_WINGED_CAP.description":"获得{Block:diff()}点[gold]格挡[/gold]。获得一层[gold]易伤[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_FORK_AND_SPOON.title":"叉子与汤勺"
-	,"RABBIT_AND_STEEL_CARD_FORK_AND_SPOON.description":"[gold]留存(1)[/gold]在这个回合，你打出的下1张攻击牌或技能牌会被额外打出一次。"
+	,"RABBIT_AND_STEEL_CARD_FORK_AND_SPOON.description":"[gold]留存(1)[/gold]\n在这个回合，你打出的下1张攻击牌或技能牌会被额外打出一次。"
 	,"RABBIT_AND_STEEL_CARD_RABBIT_AND_TANK.title":"兔子与坦克"
 	,"RABBIT_AND_STEEL_CARD_RABBIT_AND_TANK.description":"获得1层[gold]人工制品[/gold]，回合开始时获得5层[gold]覆甲[/gold]与10层[gold]活力[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_IRON_PICKAXE.title":"铁镐"
@@ -69,6 +69,9 @@
 	,"RABBIT_AND_STEEL_CARD_COLDSTEEL_SHIELD.description":"获得{Block:diff()}点[gold]格挡[/gold]。\n你在这个回合每受到一次攻击，都会对攻击者施加一层[gold]冻结[/gold]。{IfUpgraded:show:\n[gold]生成[/gold]一个[gold]冰霜[/gold]充能球。}"
 	,"RABBIT_AND_STEEL_CARD_KILLING_NOTE.title":"死亡笔记"
 	,"RABBIT_AND_STEEL_CARD_KILLING_NOTE.description":"给予{Deadline}层死线。"
+	,"RABBIT_AND_STEEL_CARD_WAITING.title":"等待"
+	,"RABBIT_AND_STEEL_CARD_WAITING.description":"[gold]留存(3)[/gold]\n对所有敌人造成{Damage:diff()}点伤害。"
+	
 
 	,"RABBIT_AND_STEEL_CARD_STORMBEAST_CARD.title":"雷兽"
 	,"RABBIT_AND_STEEL_CARD_STORMBEAST_CARD.description":""

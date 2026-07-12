@@ -36,8 +36,8 @@
   "RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.smartDescription": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold],其费用增加1{Energy:energyIcons()}。",
   "RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.title": "时间魔法",
   "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.title": "战术翻滚",
-  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description": "获得[blue]{CalculatedBlock:diff()}[/blue]点[gold]格挡[/gold]。\n在下个回合，获得[blue]{CalculatedBlock:diff()}[/blue]点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。",
-  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartDescription": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。\n在下个回合，获得{CalculatedBlock:diff()}点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。",
+  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description": "获得基础值[blue]4[/blue]点[gold]格挡[/gold]。\n在下个回合，获得基础值[blue]4[/blue]点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。",
+  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartDescription": "获得基础值[blue]4[/blue]点[gold]格挡[/gold]。\n在下个回合，获得基础值[blue]4[/blue]点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.title": "鸦羽",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.description": "当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.smartDescription": "当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。",
@@ -72,8 +72,8 @@
   ,"RABBIT_AND_STEEL_POWER_DEADLINE_POWER.description": "受到伤害后，若其生命值低于[gold]死线[/gold]+[gold]灾厄[/gold]层数，则立即死亡。"
   ,"RABBIT_AND_STEEL_POWER_DEADLINE_POWER.smartDescription": "当[gold]{OwnerName}[/gold]受到伤害后，若其生命值低[gold]死线[/gold]+[gold]灾厄[/gold]层数，则立即死亡。"
   ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY_POWER.title": "蝴蝶精灵"
-  ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY.description": "为所有人[gold]召唤[/gold][blue]2[/blue]。"
-  ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY.smartDescription": "为所有人[gold]召唤[/gold][blue]2[/blue]。"
+  ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY_POWER.description": "为所有人[gold]召唤[/gold][blue]2[/blue]。"
+  ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY_POWER.smartDescription": "为所有人[gold]召唤[/gold][blue]2[/blue]。"
   
 
 }

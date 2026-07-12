@@ -1,7 +1,9 @@
+using Godot;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
+using STS2RitsuLib.Combat.HealthBars;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
@@ -60,5 +62,13 @@ public class DeadlinePower : ModPowerTemplate
             // 复用原版 DoomPower 的处决逻辑（特效 + 钩子）
             await DoomPower.DoomKill(new List<Creature> { creature });
         }
+    }
+    public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
+    {
+        return HealthBarForecasts.Single(
+            context.Creature.GetPowerAmount<DeadlinePower>(),
+            new Color(1f, 1f, 1f, 1f),
+            HealthBarForecastGrowthDirection.FromRight
+        );
     }
 }

@@ -32,13 +32,15 @@ public class SnakebiteCommand : ModCardTemplate
         CardKeyword.Retain,
         MyKeywords.pet
     ];
-        protected override IEnumerable<DynamicVar> CanonicalVars => [
+    protected override IEnumerable<DynamicVar> CanonicalVars => 
+    [
         new DynamicVar("Decay", 4m),
     ];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => 
+    [
         HoverTipFactory.FromPower<DecayPower>(),
         HoverTipFactory.FromKeyword(CardKeyword.Retain)
-        ];
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

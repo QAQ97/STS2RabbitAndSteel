@@ -19,9 +19,7 @@ public sealed class DodgeRollPower : ModPowerTemplate, IPetKeywordHandler
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new CalculationBaseVar(4),
-        new CalculationExtraVar(1),
-        new CalculatedBlockVar(ValueProp.Move).WithMultiplier((CardModel _,Creature? creature)=>Owner.PetOwner?.Creature?.Powers.OfType<DexteritySpellPower>().Sum(p => p.Amount) ?? 0m)
+        new BlockVar(4, ValueProp.Move)
     ];
 
     public override PowerAssetProfile AssetProfile => new(

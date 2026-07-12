@@ -24,6 +24,15 @@ public class ForkAndSpoon : ModCardTemplate, IMaxHandSizeModifier
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, MyKeywords.sustain];
 
     protected override bool ShouldGlowRedInternal => SustainKeywordHandler.GetSustainTurnCount(this) == 0;
+    protected override bool IsPlayable
+    {
+        get
+        {
+            if (!base.IsPlayable)
+                return false;
+            return SustainKeywordHandler.GetSustainTurnCount(this) > 0;
+        }
+    }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -47,12 +56,5 @@ public class ForkAndSpoon : ModCardTemplate, IMaxHandSizeModifier
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
-    }
-
-    public int ModifyMaxHandSize(Player player, int currentMaxHandSize)
-    {
-        if (player == Owner && PileType.Hand.GetPile(Owner).Cards.Contains(this))
-            return currentMaxHandSize + 1;
-        return currentMaxHandSize;
     }
 }

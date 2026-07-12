@@ -15,13 +15,8 @@ public class ThrowingDagger : ModCardTemplate
 {
 	private const int energyCost = 0;
 	private const CardType type = CardType.Attack;
-	private const CardRarity rarity = CardRarity.Uncommon;
+	private const CardRarity rarity = CardRarity.Common;
 	private const TargetType targetType = TargetType.AnyEnemy;
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new[] { MyKeywords.pet };
-	protected override IEnumerable<IHoverTip> AdditionalHoverTips => 
-    [
-        HoverTipFactory.FromKeyword(MyKeywords.pet)
-    ];
 	private const bool shouldShowInCardLibrary = true;
 	public override CardAssetProfile AssetProfile => new(
 	PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"

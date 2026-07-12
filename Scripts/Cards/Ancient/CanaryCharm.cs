@@ -58,11 +58,4 @@ public class CanaryCharm : ModCardTemplate, IMaxHandSizeModifier
     {
         base.DynamicVars.ExtraDamage.UpgradeValueBy(5);
     }
-
-    public int ModifyMaxHandSize(Player player, int currentMaxHandSize)
-    {
-        if (player == Owner && PileType.Hand.GetPile(Owner).Cards.Contains(this))
-            return currentMaxHandSize + 1;
-        return currentMaxHandSize;
-    }
 }
