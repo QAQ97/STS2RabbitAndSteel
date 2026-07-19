@@ -1,12 +1,16 @@
 using System.Reflection;
 using Godot;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using RabbitAndSteel.Scripts.Cards.Ancient;
 using RabbitAndSteel.Scripts.Models;
+using RabbitAndSteel.Scripts.Monsters.Pets;
 
 namespace RabbitAndSteel.Scripts.Commands
 {
@@ -126,6 +130,97 @@ namespace RabbitAndSteel.Scripts.Commands
             {
                 NCombatRoom.Instance!.RemoveCreatureNode(creatureNode);
                 creatureNode.QueueFree();
+            }
+        }
+
+
+        //召唤逻辑
+        public static async Task SummonOrSwitchPet(PlayerChoiceContext choiceContext, Player owner, CardModel? cardSource = null)
+        {
+            if (owner?.Creature == null)
+                return;
+
+            // 1. 获取已解锁宠物列表（根据你的持久化方式，这里假设 Entry.Player.Get(owner) 可用）
+            var state = Entry.Player.Get(owner); // 若此方法不存在，请替换为实际获取方式
+            if (state?.UnlockedPets == null || state.UnlockedPets.Count == 0)
+                return;
+
+            // 2. 获取当前存活的宠物类型（如果有）
+            var currentPet = owner.Creature.CombatState.Allies
+                .FirstOrDefault(c => c.PetOwner == owner && c.IsAlive);
+            string currentType = currentPet?.Monster?.GetType().Name;
+
+            // 3. 过滤掉已存活的类型
+            var available = state.UnlockedPets.Where(p => p != currentType).ToList();
+            if (available.Count == 0)
+                return;
+
+            // 4. 确定要召唤的宠物类型
+            string chosenPetType;
+            if (available.Count == 1)
+            {
+                chosenPetType = available[0];
+            }
+            else
+            {
+                // 多个可选 → 弹出选择界面
+                var petCards = new List<CardModel>();
+                foreach (var petName in available)
+                {
+                    CardModel? card = petName switch
+                    {
+                        "Hero" => ModelDb.Card<HeroCard>().ToMutable(),
+                        "Stormbeast" => ModelDb.Card<StormbeastCard>().ToMutable(),
+                        "Dreadwyrm" => ModelDb.Card<DreadwyrmCard>().ToMutable(),
+                        _ => null
+                    };
+                    if (card != null)
+                    {
+                        card.Owner = owner;
+                        petCards.Add(card);
+                    }
+                }
+
+                if (petCards.Count == 0)
+                    return;
+
+                var prefs = new CardSelectorPrefs(
+                    prompt: new LocString("card_selection", "ABYSSAL_CALL_CHOOSE_PET"),
+                    minCount: 1,
+                    maxCount: 1
+                );
+                var selected = await CardSelectCmd.FromSimpleGrid(choiceContext, petCards, owner, prefs);
+                var chosenCard = selected.FirstOrDefault();
+                if (chosenCard == null)
+                    return;
+
+                chosenPetType = chosenCard switch
+                {
+                    HeroCard => "Hero",
+                    StormbeastCard => "Stormbeast",
+                    DreadwyrmCard => "Dreadwyrm",
+                    _ => null
+                };
+                if (chosenPetType == null)
+                    return;
+            }
+
+            // 5. 移除当前宠物（如果存在）
+            if (currentPet != null)
+                RemovePetSafely(currentPet);
+
+            // 6. 召唤新宠物
+            switch (chosenPetType)
+            {
+                case "Hero":
+                    await SummonPet<Hero>(choiceContext, owner, cardSource);
+                    break;
+                case "Stormbeast":
+                    await SummonPet<Stormbeast>(choiceContext, owner, cardSource);
+                    break;
+                case "Dreadwyrm":
+                    await SummonPet<Dreadwyrm>(choiceContext, owner, cardSource);
+                    break;
             }
         }
     }

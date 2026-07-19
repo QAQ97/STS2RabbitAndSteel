@@ -19,42 +19,31 @@ namespace RabbitAndSteel.Scripts.Powers
         );
 
         public override async Task AfterPowerAmountChanged(
-            PlayerChoiceContext choiceContext,
-            PowerModel power,
-            decimal amount,
-            Creature? applier,
-            CardModel? cardSource)
+    PlayerChoiceContext choiceContext,
+    PowerModel power,
+    decimal amount,
+    Creature? applier,
+    CardModel? cardSource)
+{
+    if (amount > 0m && applier == Owner && power.Type == PowerType.Debuff)
+    {
+        Flash();
+
+        var allies = Owner?.CombatState?.Allies;
+        if (allies == null) return;
+
+        foreach (Creature pet in allies)
         {
-            if (amount > 0m && applier == Owner && power.Type == PowerType.Debuff)
+            if (pet.Monster is not ZangHuaMonster)
+                continue;
+            var handler = pet.Powers.OfType<IPetDebuffHandler>().FirstOrDefault();
+            if (handler != null)
             {
-                Flash();
-
-                var allies = Owner?.CombatState?.Allies;
-                if (allies == null) return;
-
-                foreach (Creature pet in allies)
-                {
-                    if (pet.Monster is not ZangHuaMonster)
-                        continue;
-
-                    bool handled = false;
-                    foreach (var petPower in pet.Powers)
-                    {
-                        if (petPower is IDebuffKeywordHandler handler)
-                        {
-                            handled = await handler.OnOwnerDebuffApplied(
-                                choiceContext,
-                                debuffPower: power,
-                                debuffTarget: power.Owner,
-                                pet: pet);
-                            if (handled)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                }
+                await handler.OnPetDebuffTriggered(choiceContext, power, power.Owner, pet);
+                break;
             }
         }
+    }
+}
     }
 }

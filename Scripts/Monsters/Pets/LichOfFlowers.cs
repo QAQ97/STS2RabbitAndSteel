@@ -77,6 +77,6 @@ namespace RabbitAndSteel.Scripts.Monsters.Pets
 				)
             .Build();
     
-        public override Type DefaultPowerType => typeof(DodgeRollPower);
+        public override Type DefaultPowerType => typeof(ButterflyallyPower);
     }
 }

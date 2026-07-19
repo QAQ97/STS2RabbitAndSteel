@@ -5,8 +5,6 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
@@ -29,7 +27,20 @@ public sealed class ButterflyallyPower : ModPowerTemplate, IPetKeywordHandler
 
     public async Task<bool> OnPetKeywordTriggered(PlayerChoiceContext choiceContext, CardPlay cardPlay, Creature pet)
     {
-        var playerCreature = pet.PetOwner?.Creature;
+       var player = cardPlay.Card.Owner;
+        if (player != pet.PetOwner) return false;
+        return await ExecuteAction(choiceContext, pet, cardPlay);
+    }
+    public async Task<bool> OnPetDebuffTriggered(PlayerChoiceContext choiceContext, PowerModel debuffPower, Creature debuffTarget, Creature pet)
+    {
+        var player = pet.PetOwner;
+        if (player == null || player.Creature == null) return false;
+        return await ExecuteAction(choiceContext, pet, null);
+    }
+
+    private async Task<bool> ExecuteAction(PlayerChoiceContext choiceContext, Creature pet, CardPlay? cardPlay)
+    {
+         var playerCreature = pet.PetOwner?.Creature;
         if (playerCreature == null) return false;
         var player = cardPlay.Card.Owner;
         if (player != pet.PetOwner)

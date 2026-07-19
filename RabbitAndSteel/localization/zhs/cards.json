@@ -73,6 +73,8 @@
 	,"RABBIT_AND_STEEL_CARD_WAITING.description":"[gold]留存(3)[/gold]\n对所有敌人造成{Damage:diff()}点伤害。"
 	,"RABBIT_AND_STEEL_CARD_PARASITE.title":"寄生"
 	,"RABBIT_AND_STEEL_CARD_PARASITE.description":"当目标死于非攻击伤害时，恢复{Parasite}点生命"
+	,"RABBIT_AND_STEEL_CARD_HAPPY_MEMORY.title":"快乐回忆"
+	,"RABBIT_AND_STEEL_CARD_HAPPY_MEMORY.description":"抽{IfUpgraded:show:2|1张牌}。\n生成[gold]召唤物[/gold]。"
 
 
 
