@@ -71,7 +71,10 @@
 	,"RABBIT_AND_STEEL_CARD_KILLING_NOTE.description":"给予{Deadline}层死线。"
 	,"RABBIT_AND_STEEL_CARD_WAITING.title":"等待"
 	,"RABBIT_AND_STEEL_CARD_WAITING.description":"[gold]留存(3)[/gold]\n对所有敌人造成{Damage:diff()}点伤害。"
-	
+	,"RABBIT_AND_STEEL_CARD_PARASITE.title":"寄生"
+	,"RABBIT_AND_STEEL_CARD_PARASITE.description":"当目标死于非攻击伤害时，恢复{Parasite}点生命"
+
+
 
 	,"RABBIT_AND_STEEL_CARD_STORMBEAST_CARD.title":"雷兽"
 	,"RABBIT_AND_STEEL_CARD_STORMBEAST_CARD.description":""

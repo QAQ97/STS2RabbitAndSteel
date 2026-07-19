@@ -20,9 +20,7 @@
   "RABBIT_AND_STEEL_POWER_BURN_POWER.description": "下回合开始时失去层数的生命。",
   "RABBIT_AND_STEEL_POWER_BURN_POWER.smartDescription": "在你的下回合开始时其失去[blue]{Amount}[/blue]点生命。",
   "RABBIT_AND_STEEL_POWER_BURN_POWER.title": "灼烧",
-  "RABBIT_AND_STEEL_POWER_DOPPELGANGER.description": "攻击模仿",
-  "RABBIT_AND_STEEL_POWER_DOPPELGANGER.smartDescription": "额外再造成一次攻击牌原本数值伤害",
-  "RABBIT_AND_STEEL_POWER_DOPPELGANGER.title": "二重身",
+  
   "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.description": "所有牌消耗降至1",
   "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.smartDescription": "所有牌消耗降至1",
   "RABBIT_AND_STEEL_POWER_LONESOME_PENDANT_POWER.title": "孤独",
@@ -35,9 +33,6 @@
   "RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.description": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold]。",
   "RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.smartDescription": "在你的回合开始时，将一张[gold]僵持[/gold]加入你的[gold]手牌[/gold],其费用增加1{Energy:energyIcons()}。",
   "RABBIT_AND_STEEL_POWER_TIMEMAGE_CAP_POWER.title": "时间魔法",
-  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.title": "战术翻滚",
-  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description": "获得基础值[blue]4[/blue]点[gold]格挡[/gold]。\n在下个回合，获得基础值[blue]4[/blue]点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。",
-  "RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartDescription": "获得基础值[blue]4[/blue]点[gold]格挡[/gold]。\n在下个回合，获得基础值[blue]4[/blue]点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.title": "鸦羽",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.description": "当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。",
   "RABBIT_AND_STEEL_POWER_CROWFEATER_POWER.smartDescription": "当你施加[gold]DEBUFF[/gold]时，触发[gold]召唤物[/gold]。",
@@ -65,15 +60,27 @@
   ,"RABBIT_AND_STEEL_POWER_COLDSTEEL_SHIELD_POWER.title": "寒铁盾牌"
   ,"RABBIT_AND_STEEL_POWER_COLDSTEEL_SHIELD_POWER.description": "这个回合每受到一次攻击，都会对攻击者施加一层[gold]冻结[/gold]。"
   ,"RABBIT_AND_STEEL_POWER_COLDSTEEL_SHIELD_POWER.smartDescription": "这个回合每受到一次攻击，都会对攻击者施加一层[gold]冻结[/gold]。"
-  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.title": "净化光束"
-  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.description": "对所有敌人造成2点伤害3次。并清除你手中的状态牌。"
-  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.smartDescription": "对所有敌人造成2点伤害3次。并清除你手中的状态牌。"
   ,"RABBIT_AND_STEEL_POWER_DEADLINE_POWER.title": "死线"
   ,"RABBIT_AND_STEEL_POWER_DEADLINE_POWER.description": "受到伤害后，若其生命值低于[gold]死线[/gold]+[gold]灾厄[/gold]层数，则立即死亡。"
   ,"RABBIT_AND_STEEL_POWER_DEADLINE_POWER.smartDescription": "当[gold]{OwnerName}[/gold]受到伤害后，若其生命值低[gold]死线[/gold]+[gold]灾厄[/gold]层数，则立即死亡。"
+  ,"RABBIT_AND_STEEL_POWER_PARASITE_POWER.title": "寄生"
+  ,"RABBIT_AND_STEEL_POWER_PARASITE_POWER.description": "当目标死于非攻击伤害时，恢复所有施加者{Amount}点生命。"
+  ,"RABBIT_AND_STEEL_POWER_PARASITE_POWER.smartDescription": "当目标死于非攻击伤害时，恢复所有施加者{Amount}点生命。"
+  
+
   ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY_POWER.title": "蝴蝶精灵"
   ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY_POWER.description": "为所有人[gold]召唤[/gold][blue]2[/blue]。"
   ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY_POWER.smartDescription": "为所有人[gold]召唤[/gold][blue]2[/blue]。"
+  ,"RABBIT_AND_STEEL_POWER_DOPPELGANGER.title": "二重身"
+  ,"RABBIT_AND_STEEL_POWER_DOPPELGANGER.description": "额外再造成一次攻击牌原本数值伤害"
+  ,"RABBIT_AND_STEEL_POWER_DOPPELGANGER.smartDescription": "额外再造成一次攻击牌原本数值伤害"
+  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.title": "净化光束"
+  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.description": "对所有敌人造成2点伤害3次。并清除你手中的状态牌。"
+  ,"RABBIT_AND_STEEL_POWER_GARNET_FLARE.smartDescription": "对所有敌人造成2点伤害3次。并清除你手中的状态牌。"
+  ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.title": "战术翻滚"
+  ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.description": "获得基础值[blue]4[/blue]点[gold]格挡[/gold]。\n在下个回合，获得基础值[blue]4[/blue]点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。"
+  ,"RABBIT_AND_STEEL_POWER_DODGE_ROLL_POWER.smartDescription": "获得基础值[blue]4[/blue]点[gold]格挡[/gold]。\n在下个回合，获得基础值[blue]4[/blue]点[gold]格挡[/gold]（受[gold]敏捷咒语[/gold]加成）。"
+  
   
 
 }
