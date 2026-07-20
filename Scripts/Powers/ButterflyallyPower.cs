@@ -11,7 +11,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace RabbitAndSteel.Scripts.Powers;
 
 [RegisterPower]
-public sealed class ButterflyallyPower : ModPowerTemplate, IPetKeywordHandler
+public sealed class ButterflyallyPower : ModPowerTemplate, IPetKeywordHandler, IPetDebuffHandler
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

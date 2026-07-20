@@ -1,6 +1,9 @@
+using System.Linq;
+using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using RabbitAndSteel.Scripts.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
@@ -19,31 +22,30 @@ namespace RabbitAndSteel.Scripts.Powers
         );
 
         public override async Task AfterPowerAmountChanged(
-    PlayerChoiceContext choiceContext,
-    PowerModel power,
-    decimal amount,
-    Creature? applier,
-    CardModel? cardSource)
-{
-    if (amount > 0m && applier == Owner && power.Type == PowerType.Debuff)
-    {
-        Flash();
-
-        var allies = Owner?.CombatState?.Allies;
-        if (allies == null) return;
-
-        foreach (Creature pet in allies)
+        PlayerChoiceContext choiceContext,
+        PowerModel power,
+        decimal amount,
+        Creature? applier,
+        CardModel? cardSource)
         {
-            if (pet.Monster is not ZangHuaMonster)
-                continue;
-            var handler = pet.Powers.OfType<IPetDebuffHandler>().FirstOrDefault();
-            if (handler != null)
+            if (amount > 0m && applier == Owner && power.Type == PowerType.Debuff)
             {
-                await handler.OnPetDebuffTriggered(choiceContext, power, power.Owner, pet);
-                break;
+                var allies = Owner?.CombatState?.Allies;
+                if (allies == null) return;
+
+                foreach (Creature pet in allies)
+                {
+                    if (pet.Monster is not ZangHuaMonster)
+                        continue;
+                    var handler = pet.Powers.OfType<IPetDebuffHandler>().FirstOrDefault();
+                    if (handler != null)
+                    {
+                        Flash();
+                        await handler.OnPetDebuffTriggered(choiceContext, power, power.Owner, pet);
+                        break;
+                    }
+                }
             }
         }
-    }
-}
     }
 }

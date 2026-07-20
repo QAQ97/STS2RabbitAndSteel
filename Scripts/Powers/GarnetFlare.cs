@@ -6,14 +6,13 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-using RabbitAndSteel.Scripts.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace RabbitAndSteel.Scripts.Powers;
 
 [RegisterPower]
-public sealed class GarnetFlare : ModPowerTemplate, IPetKeywordHandler
+public sealed class GarnetFlare : ModPowerTemplate, IPetKeywordHandler, IPetDebuffHandler
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -27,9 +26,10 @@ public sealed class GarnetFlare : ModPowerTemplate, IPetKeywordHandler
         BigIconPath: $"res://RabbitAndSteel/images/icons/{GetType().Name}0.png"
     );
 
+
     public async Task<bool> OnPetKeywordTriggered(PlayerChoiceContext choiceContext, CardPlay cardPlay, Creature pet)
     {
-       var player = cardPlay.Card.Owner;
+        var player = cardPlay.Card.Owner;
         if (player != pet.PetOwner) return false;
         return await ExecuteAction(choiceContext, pet, cardPlay);
     }
@@ -42,11 +42,10 @@ public sealed class GarnetFlare : ModPowerTemplate, IPetKeywordHandler
 
     private async Task<bool> ExecuteAction(PlayerChoiceContext choiceContext, Creature pet, CardPlay? cardPlay)
     {
-        var playerCreature = pet.PetOwner?.Creature;
+        var player = pet.PetOwner;
+        if (player == null) return false;
+        var playerCreature = player.Creature;
         if (playerCreature == null) return false;
-        var player = cardPlay.Card.Owner;
-        if (player != pet.PetOwner) return false;
-        if (pet.Monster is not ZangHuaMonster zangPet) return false;
 
         var hand = player.PlayerCombatState.Hand;
         var statusCards = hand.Cards.Where(c => c.Type == CardType.Status).ToList();
@@ -56,16 +55,27 @@ public sealed class GarnetFlare : ModPowerTemplate, IPetKeywordHandler
         }
 
         decimal baseDamage = 2;
-        decimal petStrengthBonus = pet.PetOwner?.Creature?.Powers.OfType<StrengthSpellPower>().Sum(p => p.Amount) ?? 0m;
-        decimal attackDamage = baseDamage + petStrengthBonus;
+        decimal strengthBonus = playerCreature.Powers.OfType<StrengthSpellPower>().Sum(p => p.Amount);
+        decimal totalDamage = baseDamage + strengthBonus;
+
+
+        var enemies = pet.CombatState.Enemies.Where(e => e.IsAlive).ToList();
+        if (!enemies.Any())
+            return false;
 
         await CreatureCmd.TriggerAnim(pet, "Cast", 0.25f);
-        await DamageCmd.Attack(attackDamage)
-            .WithHitCount(3)
-            .FromCard(cardPlay.Card, cardPlay)
-            .TargetingAllOpponents(pet.CombatState)
-            .Unpowered()
-            .Execute(choiceContext);
+        for (int i = 0; i < 3; i++)
+        {
+            await CreatureCmd.Damage(
+                choiceContext,
+                enemies,
+                totalDamage,
+                ValueProp.Unpowered,
+                pet,
+                cardPlay?.Card,
+                cardPlay
+            );
+        }
 
         return true;
     }
