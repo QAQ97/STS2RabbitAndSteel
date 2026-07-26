@@ -56,6 +56,6 @@ public class CanaryCharm : ModCardTemplate, IMaxHandSizeModifier
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.ExtraDamage.UpgradeValueBy(5);
+        base.DynamicVars.ExtraDamage.UpgradeValueBy(3);
     }
 }

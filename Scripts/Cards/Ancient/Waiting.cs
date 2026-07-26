@@ -9,8 +9,6 @@ using RabbitAndSteel.Scripts.Powers;
 using STS2RitsuLib.Combat.HandSize;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RabbitAndSteel.Scripts.Cards.Ancient;
 
@@ -22,8 +20,6 @@ public class Waiting : ModCardTemplate, IMaxHandSizeModifier
     private const CardRarity rarity = CardRarity.Uncommon;
     private const TargetType targetType = TargetType.AllEnemies;
     private const bool shouldShowInCardLibrary = true;
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, MyKeywords.sustain, MyKeywords.pet];
     protected override bool ShouldGlowRedInternal => !IsPlayable;
 
     protected override bool IsPlayable
@@ -32,7 +28,7 @@ public class Waiting : ModCardTemplate, IMaxHandSizeModifier
         {
             if (!base.IsPlayable)
                 return false;
-            return SustainKeywordHandler.GetSustainTurnCount(this) >= 3;
+            return SustainKeywordHandler.GetSustainTurnCount(this) >= 2;
         }
     }
 

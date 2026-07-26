@@ -34,8 +34,7 @@ public class IronPickaxe : ModCardTemplate
         CardKeyword.Exhaust
     ];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromKeyword(MyKeywords.pet)
-        ,HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
         ];
 
     private class OreDrop

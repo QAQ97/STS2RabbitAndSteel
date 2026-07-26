@@ -48,7 +48,7 @@
 	,"RABBIT_AND_STEEL_CARD_THROWING_DAGGER.title":"飞刀"
 	,"RABBIT_AND_STEEL_CARD_THROWING_DAGGER.description":"造成{Damage:diff()}点伤害。每当你打出带有[gold]召唤物[/gold]的牌，将此牌从[gold]弃牌堆[/gold]放回你的[gold]手牌[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_PAJAMA_HAT.title":"睡衣帽子"
-	,"RABBIT_AND_STEEL_CARD_PAJAMA_HAT.description":"获得{Block:diff()}点[gold]格挡[/gold]。将一张[gold]{IfUpgraded:show:僵持+|僵持}[/gold]加入你的[gold]手牌[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_PAJAMA_HAT.description":"获得{Block:diff()}点[gold]格挡[/gold]。添加1张[gold]{IfUpgraded:show:僵持+|僵持}[/gold]到你的[gold]手牌[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_WINGED_CAP.title":"飞行帽子"
 	,"RABBIT_AND_STEEL_CARD_WINGED_CAP.description":"获得{Block:diff()}点[gold]格挡[/gold]。获得一层[gold]易伤[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_FORK_AND_SPOON.title":"叉子与汤勺"
@@ -74,9 +74,11 @@
 	,"RABBIT_AND_STEEL_CARD_PARASITE.title":"寄生"
 	,"RABBIT_AND_STEEL_CARD_PARASITE.description":"当目标死于非攻击伤害时，恢复{Parasite}点生命"
 	,"RABBIT_AND_STEEL_CARD_HAPPY_MEMORY.title":"快乐回忆"
-	,"RABBIT_AND_STEEL_CARD_HAPPY_MEMORY.description":"抽{IfUpgraded:show:2|1张牌}。\n生成[gold]召唤物[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_HAPPY_MEMORY.description":"抽{IfUpgraded:show:2|1}张牌。\n生成[gold]召唤物[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_REMINISCENCE_GRENADIER.title":"追忆-爆破"
 	,"RABBIT_AND_STEEL_CARD_REMINISCENCE_GRENADIER.description":"对所有敌人造成{Damage:diff()}点伤害{IfUpgraded:show:6|5}次\n且每次伤害后附加3层随机延迟伤害类debuff。"
+	,"RABBIT_AND_STEEL_CARD_TIMEWARP_WAND.title":"时间扭曲魔杖"
+	,"RABBIT_AND_STEEL_CARD_TIMEWARP_WAND.description":"添加{Cards:diff()}张[gold]僵持+[/gold]到你的[gold]手牌[/gold]。"
 
 
 

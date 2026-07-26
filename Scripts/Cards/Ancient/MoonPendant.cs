@@ -28,7 +28,7 @@ public class MoonPendant : ModCardTemplate
 	PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"
 	);
 	protected override IEnumerable<DynamicVar> CanonicalVars => [
-		new DamageVar(4, ValueProp.Move)
+		new DamageVar(6, ValueProp.Move)
 	];
 	public MoonPendant() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
 	{
