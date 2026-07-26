@@ -29,7 +29,7 @@ public class RedFancifulBook : ModCardTemplate, IMaxHandSizeModifier
 
     public override decimal ModifyMaxEnergy(Player player, decimal amount)
 	{
-		if (player != base.Owner && PileType.Hand.GetPile(Owner).Cards.Contains(this))
+		if (player != base.Owner || !PileType.Hand.GetPile(Owner).Cards.Contains(this))
 		{
 			return amount;
 		}
@@ -39,7 +39,7 @@ public class RedFancifulBook : ModCardTemplate, IMaxHandSizeModifier
 
 	public override decimal ModifyHandDraw(Player player, decimal count)
 	{
-		if (player != base.Owner && PileType.Hand.GetPile(Owner).Cards.Contains(this))
+		if (player != base.Owner || !PileType.Hand.GetPile(Owner).Cards.Contains(this))
 		{
 			return count;
 		}

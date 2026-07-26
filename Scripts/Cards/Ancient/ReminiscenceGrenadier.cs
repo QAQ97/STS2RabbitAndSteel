@@ -2,10 +2,11 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 using RabbitAndSteel.Scripts.CardPools;
 using RabbitAndSteel.Scripts.Models;
+using STS2RitsuLib;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
@@ -38,7 +39,11 @@ public class ReminiscenceGrenadier : ModCardTemplate
         if (!enemies.Any())
             return;
 
-        Rng rng = Owner.RunState.Rng.CombatTargets;
+        // 使用 RitsuLib 托管 RNG 流，避免多人游戏 Niche RNG 状态不同步
+        var runState = Owner.RunState as RunState;
+        if (runState == null)
+            return;
+        var rng = RitsuLibFramework.GetModRunRng(runState, Entry.ModId, "reminiscence_grenadier");
 
         foreach (var enemy in enemies)
         {

@@ -31,7 +31,7 @@ public class GlacierSpear: ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DynamicVar("Freeze", 1m)
-        ,new DamageVar(3, ValueProp.Move)
+        ,new DamageVar(6, ValueProp.Move)
     ];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromPower<FreezePower>()

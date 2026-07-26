@@ -4,9 +4,10 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.Runs;
 using RabbitAndSteel.Scripts.Cards.Ancient;
 using RabbitAndSteel.Scripts.Characters;
+using STS2RitsuLib;
 using STS2RitsuLib.Interactions.RightClick;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -18,8 +19,8 @@ namespace RabbitAndSteel.Scripts.Relics;
 [RegisterCharacterStarterRelic(typeof(AncientCharacter))]
 public class EternalPartner : ModRelicTemplate, IModRightClickableRelic
 {
-    // 所有可解锁的宠物类型（可根据需要扩展）
-    private static readonly string[] AllPetTypes = ["Hero", "Stormbeast", "Dreadwyrm"];
+    // 所有可解锁的宠物类型
+    private static readonly string[] AllPetTypes = ["Hero", "Stormbeast", "Dreadwyrm","LichOfFlowers"];
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
@@ -42,52 +43,69 @@ public class EternalPartner : ModRelicTemplate, IModRightClickableRelic
         }
     }
 
-    // 辅助属性：访问玩家运行状态中的解锁列表
-    private HashSet<string>? UnlockedPets => Entry.Player.Get(Owner)?.UnlockedPets;
-
-    public void AddStacks(int amount)
-    {
-        if (Owner == null) return;
-        Entry.Player.Modify(Owner, data => data.CurrentStacks += amount);
-        InvokeDisplayAmountChanged();
-    }
-
-    public void RemoveStacks(int amount)
-    {
-        if (Owner == null) return;
-        Entry.Player.Modify(Owner, data => data.CurrentStacks -= amount);
-        InvokeDisplayAmountChanged();
-    }
-
-    public int GetCurrentStacks()
-    {
-        if (Owner == null) return 0;
-        return Entry.Player.Get(Owner)?.CurrentStacks ?? 0;
-    }
-
-    public void SetStacks(int value)
-    {
-        if (Owner == null) return;
-        Entry.Player.Modify(Owner, data => data.CurrentStacks = value);
-        InvokeDisplayAmountChanged();
-    }
-
     // ----- 战斗开始添加一张 AbyssalCall -----
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner || Owner.Creature.CombatState.RoundNumber != 1)
             return;
-        Flash();
-
         var template = ModelDb.Card<AbyssalCall>();
         var card = Owner.Creature.CombatState.CreateCard(template, Owner);
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
     }
 
-    // ----- 右键点击逻辑（IModRightClickableRelic）-----
+    // 辅助属性：访问玩家运行状态中的解锁列表
+    private RunState? CurrentRunState => Owner?.RunState as RunState;
+
+    private HashSet<string>? UnlockedPets
+    {
+        get
+        {
+            var rs = CurrentRunState;
+            if (rs == null || Owner == null) return null;
+            return Entry.Player.Get(rs, Owner.NetId)?.UnlockedPets;
+        }
+    }
+
+    public void AddStacks(int amount)
+    {
+        var rs = CurrentRunState;
+        if (rs == null || Owner == null) return;
+        Entry.Player.Modify(rs, Owner.NetId, data => data.CurrentStacks += amount);
+        InvokeDisplayAmountChanged();
+    }
+
+    public void RemoveStacks(int amount)
+    {
+        var rs = CurrentRunState;
+        if (rs == null || Owner == null) return;
+        Entry.Player.Modify(rs, Owner.NetId, data => data.CurrentStacks -= amount);
+        InvokeDisplayAmountChanged();
+    }
+
+    public int GetCurrentStacks()
+    {
+        var rs = CurrentRunState;
+        if (rs == null || Owner == null) return 0;
+        return Entry.Player.Get(rs, Owner.NetId)?.CurrentStacks ?? 0;
+    }
+
+    public void SetStacks(int value)
+    {
+        var rs = CurrentRunState;
+        if (rs == null || Owner == null) return;
+        Entry.Player.Modify(rs, Owner.NetId, data => data.CurrentStacks = value);
+        InvokeDisplayAmountChanged();
+    }
+
     public async Task OnRightClick(ModRightClickExecutionContext context)
     {
-  
+        var rs = CurrentRunState;
+        if (rs == null || Owner == null)
+        {
+            RitsuToastService.ShowError("无法获取运行状态。");
+            return;
+        }
+
         if (GetCurrentStacks() < 10)
         {
             RitsuToastService.ShowWarning("需要至少 10 层才能解锁新宠物。");
@@ -101,7 +119,6 @@ public class EternalPartner : ModRelicTemplate, IModRightClickableRelic
             return;
         }
 
-        // 获取尚未解锁的宠物列表
         var available = AllPetTypes.Where(pet => !unlocked.Contains(pet)).ToList();
         if (available.Count == 0)
         {
@@ -109,10 +126,10 @@ public class EternalPartner : ModRelicTemplate, IModRightClickableRelic
             return;
         }
 
-        // 随机选择一种（使用玩家自己的 Rng，保证可复现）
-        Rng rng = Owner.RunState.Rng.CombatTargets;
+        // 使用 RitsuLib 托管 RNG 流，避免多人游戏 Niche RNG 状态不同步
+        var rng = RitsuLibFramework.GetModPlayerRng(Owner, Entry.ModId, "eternal_partner_unlock");
         string chosenPet = available[rng.NextInt(available.Count)];
-        Entry.Player.Modify(Owner, data => data.UnlockedPets.Add(chosenPet));
+        Entry.Player.Modify(rs, Owner.NetId, data => data.UnlockedPets.Add(chosenPet));
         RemoveStacks(10);
         RitsuToastService.ShowInfo($"已解锁宠物：{chosenPet}！");
     }

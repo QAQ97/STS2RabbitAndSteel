@@ -172,6 +172,7 @@ namespace RabbitAndSteel.Scripts.Commands
                         "Hero" => ModelDb.Card<HeroCard>().ToMutable(),
                         "Stormbeast" => ModelDb.Card<StormbeastCard>().ToMutable(),
                         "Dreadwyrm" => ModelDb.Card<DreadwyrmCard>().ToMutable(),
+                        "LichOfFlowers" => ModelDb.Card<LichOfFlowersCard>().ToMutable(),
                         _ => null
                     };
                     if (card != null)
@@ -199,6 +200,7 @@ namespace RabbitAndSteel.Scripts.Commands
                     HeroCard => "Hero",
                     StormbeastCard => "Stormbeast",
                     DreadwyrmCard => "Dreadwyrm",
+                    LichOfFlowersCard => "LichOfFlowers",
                     _ => null
                 };
                 if (chosenPetType == null)
@@ -220,6 +222,9 @@ namespace RabbitAndSteel.Scripts.Commands
                     break;
                 case "Dreadwyrm":
                     await SummonPet<Dreadwyrm>(choiceContext, owner, cardSource);
+                    break;
+                case "LichOfFlowers":
+                    await SummonPet<LichOfFlowers>(choiceContext, owner, cardSource);
                     break;
             }
         }

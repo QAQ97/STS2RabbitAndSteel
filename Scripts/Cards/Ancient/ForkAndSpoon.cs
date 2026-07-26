@@ -48,8 +48,7 @@ public class ForkAndSpoon : ModCardTemplate, IMaxHandSizeModifier
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int sustainCount = SustainKeywordHandler.GetSustainTurnCount(this);
-        await PowerCmd.Apply<ForkAndSpoonPower>(choiceContext, Owner.Creature, 1m + sustainCount, Owner.Creature, this);
+        await PowerCmd.Apply<ForkAndSpoonPower>(choiceContext, Owner.Creature, 1m , Owner.Creature, this);
         SustainKeywordHandler.ResetSustainTurnCount(this);
     }
 
