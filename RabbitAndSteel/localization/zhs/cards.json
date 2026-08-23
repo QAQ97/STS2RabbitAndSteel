@@ -70,15 +70,19 @@
 	,"RABBIT_AND_STEEL_CARD_KILLING_NOTE.title":"死亡笔记"
 	,"RABBIT_AND_STEEL_CARD_KILLING_NOTE.description":"给予{Deadline}层死线。"
 	,"RABBIT_AND_STEEL_CARD_WAITING.title":"等待"
-	,"RABBIT_AND_STEEL_CARD_WAITING.description":"[gold]留存(3)[/gold]\n对所有敌人造成{Damage:diff()}点伤害。"
+	,"RABBIT_AND_STEEL_CARD_WAITING.description":"[gold]留存(2)[/gold]\n对所有敌人造成{Damage:diff()}点伤害。"
 	,"RABBIT_AND_STEEL_CARD_PARASITE.title":"寄生"
 	,"RABBIT_AND_STEEL_CARD_PARASITE.description":"当目标死于非攻击伤害时，恢复{Parasite}点生命"
 	,"RABBIT_AND_STEEL_CARD_HAPPY_MEMORY.title":"快乐回忆"
 	,"RABBIT_AND_STEEL_CARD_HAPPY_MEMORY.description":"抽{IfUpgraded:show:2|1}张牌。\n生成[gold]召唤物[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_REMINISCENCE_GRENADIER.title":"追忆-爆破"
-	,"RABBIT_AND_STEEL_CARD_REMINISCENCE_GRENADIER.description":"对所有敌人造成{Damage:diff()}点伤害{IfUpgraded:show:6|5}次\n且每次伤害后附加3层随机延迟伤害类debuff。"
+	,"RABBIT_AND_STEEL_CARD_REMINISCENCE_GRENADIER.description":"对所有敌人造成{Damage:diff()}点伤害{IfUpgraded:show:6|5}次\n且每次伤害后附加3层随机延迟伤害类debuff(除深度冻结)。"
 	,"RABBIT_AND_STEEL_CARD_TIMEWARP_WAND.title":"时间扭曲魔杖"
 	,"RABBIT_AND_STEEL_CARD_TIMEWARP_WAND.description":"添加{Cards:diff()}张[gold]僵持+[/gold]到你的[gold]手牌[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_SONW_BOOTS.title":"雪地靴子"
+	,"RABBIT_AND_STEEL_CARD_SONW_BOOTS.description":"获得{Block:diff()}点[gold]格挡[/gold]。\n给予所有敌人{Freeze}层[gold]冻结[/gold]。"
+	,"RABBIT_AND_STEEL_CARD_CLAY_RABBIT.title":"兔子陶偶"
+	,"RABBIT_AND_STEEL_CARD_CLAY_RABBIT.description":"战斗结束后，得到一件易碎遗物。"
 
 
 

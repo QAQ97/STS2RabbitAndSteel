@@ -12,6 +12,9 @@ using STS2RitsuLib.RunData;
 using RabbitAndSteel.Scripts.Models;
 using System.Collections.Concurrent;
 using Godot;
+using STS2RitsuLib.Combat.Rewards;
+using MegaCrit.Sts2.Core.Rewards;
+using RabbitAndSteel.Scripts.Rewards;
 
 
 namespace RabbitAndSteel.Scripts;
@@ -25,6 +28,9 @@ public class Entry
     // 特效动画句柄
     public static readonly ConcurrentDictionary<string, PackedScene> ModSceneCache = new();
     // 玩家数据句柄
+
+    public static RewardType RelicRewardType;
+    
     public static PlayerRunSavedData<PlayerRunState> Player = null!;
     public static readonly MegaCrit.Sts2.Core.Logging.Logger Logger = RitsuLibFramework.CreateLogger(ModId);
 
@@ -75,17 +81,25 @@ public class Entry
         }
 
         static void LoadScenes() {
-    //你的场景字符串列表
-    var paths = new List<string> {
-    };
-    foreach (var path in paths) {
-        if (ModSceneCache.ContainsKey(path)) continue;
-        var scene = ResourceLoader.Load<PackedScene>(path, null, ResourceLoader.CacheMode.Reuse);
-        if (scene != null) {
-            ModSceneCache[path] = scene;
+            //你的场景字符串列表
+            var paths = new List<string> {
+            };
+            foreach (var path in paths) {
+                if (ModSceneCache.ContainsKey(path)) continue;
+                var scene = ResourceLoader.Load<PackedScene>(path, null, ResourceLoader.CacheMode.Reuse);
+                if (scene != null) {
+                    ModSceneCache[path] = scene;
+                }
+            }
         }
-    }
-}
+
+            //添加兔子陶偶等自定义奖励
+            RelicRewardType = ModRewardRegistry.For(ModId)
+            .RegisterOwned(
+                "relic_reward",                                    // 奖励ID
+                (save, player, json) => new FragileRelicReward(player) // 工厂函数
+            )
+            .RewardType;
         
     }
 }

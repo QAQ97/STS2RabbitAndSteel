@@ -23,7 +23,6 @@ public class ReminiscenceGrenadier : ModCardTemplate
 
     public override CardAssetProfile AssetProfile => new(
     PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"
-    ,VisualStyle : CardVisualStyle.Ancient
     );
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[] {
@@ -39,7 +38,6 @@ public class ReminiscenceGrenadier : ModCardTemplate
         if (!enemies.Any())
             return;
 
-        // 使用 RitsuLib 托管 RNG 流，避免多人游戏 Niche RNG 状态不同步
         var runState = Owner.RunState as RunState;
         if (runState == null)
             return;

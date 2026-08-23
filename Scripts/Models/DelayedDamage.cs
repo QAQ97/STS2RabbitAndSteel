@@ -34,7 +34,6 @@ public static class DelayedDamage
             typeof(BurnPower),
             typeof(CursePower),
             typeof(FreezePower),
-            typeof(DeepFreezePower)
         };
 
         int index = rng.NextInt(buffTypes.Length);

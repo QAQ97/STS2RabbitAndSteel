@@ -66,6 +66,10 @@
   ,"RABBIT_AND_STEEL_POWER_PARASITE_POWER.title": "寄生"
   ,"RABBIT_AND_STEEL_POWER_PARASITE_POWER.description": "当目标死于非攻击伤害时，恢复所有施加者{Amount}点生命。"
   ,"RABBIT_AND_STEEL_POWER_PARASITE_POWER.smartDescription": "当目标死于非攻击伤害时，恢复所有施加者{Amount}点生命。"
+  ,"RABBIT_AND_STEEL_POWER_CLAY_RABBIT_POWER.title": "兔子陶偶"
+  ,"RABBIT_AND_STEEL_POWER_CLAY_RABBIT_POWER.description": "战斗结束后，得到一件易碎遗物。"
+  ,"RABBIT_AND_STEEL_POWER_CLAY_RABBIT_POWER.smartDescription": "战斗结束后，得到一件易碎遗物。"
+
   
 
   ,"RABBIT_AND_STEEL_POWER_BUTTERFLYALLY_POWER.title": "蝴蝶精灵"

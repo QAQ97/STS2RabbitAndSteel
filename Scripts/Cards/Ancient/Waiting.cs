@@ -1,12 +1,10 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using RabbitAndSteel.Scripts.CardPools;
-using RabbitAndSteel.Scripts.Powers;
 using STS2RitsuLib.Combat.HandSize;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -21,7 +19,7 @@ public class Waiting : ModCardTemplate, IMaxHandSizeModifier
     private const CardRarity rarity = CardRarity.Uncommon;
     private const TargetType targetType = TargetType.AllEnemies;
     private const bool shouldShowInCardLibrary = true;
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new[] {CardKeyword.Retain};
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new[] {CardKeyword.Retain, MyKeywords.sustain};
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => 
     [
         HoverTipFactory.FromKeyword(CardKeyword.Retain)

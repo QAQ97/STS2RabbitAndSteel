@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
 using RabbitAndSteel.Scripts.CardPools;
 using RabbitAndSteel.Scripts.Powers;
 using STS2RitsuLib.Interop.AutoRegistration;

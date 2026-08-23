@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
 using RabbitAndSteel.Scripts.Cards.Ancient;
 using RabbitAndSteel.Scripts.Characters;
+using RabbitAndSteel.Scripts.RelicPools;
 using STS2RitsuLib;
 using STS2RitsuLib.Interactions.RightClick;
 using STS2RitsuLib.Interop.AutoRegistration;

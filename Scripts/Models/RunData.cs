@@ -8,6 +8,6 @@ public sealed class ChallengeRunState
 // 属于单个玩家数据
 public sealed class PlayerRunState
 {
-    public int CurrentStacks { get; set; } = 13;
+    public int CurrentStacks { get; set; } = 0;
     public HashSet<string> UnlockedPets { get; set; } = ["Hero","Stormbeast"];
 }

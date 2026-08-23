@@ -1,6 +1,6 @@
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace RabbitAndSteel.Scripts;
+namespace RabbitAndSteel.Scripts.RelicPools;
 
 public class AncientRelicPool : TypeListRelicPoolModel
 {
