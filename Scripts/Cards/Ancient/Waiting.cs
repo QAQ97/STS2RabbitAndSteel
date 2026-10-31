@@ -32,7 +32,7 @@ public class Waiting : ModCardTemplate, IMaxHandSizeModifier
         {
             if (!base.IsPlayable)
                 return false;
-            return SustainKeywordHandler.GetSustainTurnCount(this) >= 2;
+            return SustainKeywordHandler.GetSustainTurnCount(this) >= 3;
         }
     }
 

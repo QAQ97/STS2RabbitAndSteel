@@ -83,6 +83,10 @@
 	,"RABBIT_AND_STEEL_CARD_SONW_BOOTS.description":"获得{Block:diff()}点[gold]格挡[/gold]。\n给予所有敌人{Freeze}层[gold]冻结[/gold]。"
 	,"RABBIT_AND_STEEL_CARD_CLAY_RABBIT.title":"兔子陶偶"
 	,"RABBIT_AND_STEEL_CARD_CLAY_RABBIT.description":"战斗结束后，得到一件易碎遗物。"
+	,"RABBIT_AND_STEEL_CARD_Epoch_Slash.title":"时空-斩"
+	,"RABBIT_AND_STEEL_CARD_Epoch_Slash.description":"接下来X个回合结束时，\n造成10+触发回合数*5的伤害。"
+	,"RABBIT_AND_STEEL_CARD_.title":"原始生命态拉纳利"
+	,"RABBIT_AND_STEEL_CARD_.description":"丢弃所有手牌生成一张陨石衍生物。"
 
 
 

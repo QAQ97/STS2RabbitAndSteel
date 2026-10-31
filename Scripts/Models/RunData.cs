@@ -9,5 +9,5 @@ public sealed class ChallengeRunState
 public sealed class PlayerRunState
 {
     public int CurrentStacks { get; set; } = 0;
-    public HashSet<string> UnlockedPets { get; set; } = ["Hero","Stormbeast"];
+    public HashSet<string> UnlockedPets { get; set; } = ["Hero"];
 }

@@ -19,7 +19,6 @@ public class GlacierSpear: ModCardTemplate
     private const CardType type = CardType.Attack;
     private const CardRarity rarity = CardRarity.Common;
     private const TargetType targetType = TargetType.AnyEnemy;
-    public override bool GainsBlock => true;
     private const bool shouldShowInCardLibrary = true;
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"res://RabbitAndSteel/images/ancient/cards/{GetType().Name}.png"

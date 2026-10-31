@@ -96,7 +96,7 @@ public class Entry
             //添加兔子陶偶等自定义奖励
             RelicRewardType = ModRewardRegistry.For(ModId)
             .RegisterOwned(
-                "relic_reward",                                    // 奖励ID
+                "fragile_relic_reward",                                    // 奖励ID
                 (save, player, json) => new FragileRelicReward(player) // 工厂函数
             )
             .RewardType;
